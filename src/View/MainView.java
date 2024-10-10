@@ -26,3 +26,5 @@ public class MainView extends JFrame {
     }
 
 }
+
+// each view should have it's own controller

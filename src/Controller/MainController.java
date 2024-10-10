@@ -42,6 +42,9 @@ public class MainController {
         LoginScreen loginScreen = view.getLoginScreen();
         loginScreen.setLoginButtonLister(e -> handleLogin());
         loginScreen.setGuestButtonLister(e -> guestLogin());
+//        loginScreen.getLoginButton().addActionListener(new ActionListener() {
+//
+//        });
     }
 
 }
