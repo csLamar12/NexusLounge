@@ -10,7 +10,7 @@ import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 
 public class LoginScreen extends JFrame {
-    private static final String nLTBPath = "/Users/lamar/Documents/Java/Advanced Programming/NexusLounge/src/Resources/nXLogo.png";
+    private static final String nLTBPath = "src/Resources/nXLogo.png";
     private ShadowedPanel popUpPanel = new ShadowedPanel();
     private PlaceHolderTF usernameTB, passwordTB;
     private JButton loginButton, guestButton;

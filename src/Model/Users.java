@@ -1,4 +1,4 @@
-import package Model;
+package Model;
 
 public class Users
 {
