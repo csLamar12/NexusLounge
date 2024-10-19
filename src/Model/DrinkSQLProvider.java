@@ -1,16 +1,16 @@
-//Author: Danielle Johns
 package Model;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-// The DrinkSQLProvider class provides SQL database operations for the Drink entity.
+/**
+ * The DrinkSQLProvider class provides SQL database operations for the Drink entity,
+ * including inserting, retrieving, updating, and deleting drinks in the database.
+ * It interacts with the Drinks table in the database.
+ */
 public class DrinkSQLProvider {
 
     // Connection to the database
@@ -19,122 +19,113 @@ public class DrinkSQLProvider {
     // Logger for logging messages and errors
     private static final Logger logger = Logger.getLogger(DrinkSQLProvider.class.getName());
 
-    // Constructor that takes a Connection object to interact with the database
+    /**
+     * Initializes the DrinkSQLProvider with a database connection.
+     *
+     * @param connection the database connection to be used for SQL operations.
+     */
     public DrinkSQLProvider(Connection connection) {
         this.connection = connection;
     }
 
-    // Method to insert a new drink into the database
+    /**
+     * Inserts a new drink into the database.
+     *
+     * @param drink the Drink object containing the information to be inserted.
+     */
     public void insertDrink(Drink drink) {
-        // SQL query to insert a new drink record into the Drinks table
         String query = "INSERT INTO Drinks (name, isAlcoholic) VALUES (?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
-            // Set the parameters for the name and isAlcoholic fields
             stmt.setString(1, drink.getName());
             stmt.setBoolean(2, drink.isAlcoholic());
-
-            // Execute the query to insert the new drink
             stmt.executeUpdate();
-
-            // Log a success message
             logger.info("Drink inserted successfully: " + drink.getName());
         } catch (SQLException e) {
-            // Log an error message in case of failure
             logger.log(Level.SEVERE, "Failed to insert drink: " + drink.getName(), e);
         }
     }
 
-    // Method to retrieve a drink by its ID
+    /**
+     * Retrieves a drink by its ID.
+     *
+     * @param id the ID of the drink to be retrieved.
+     * @return the Drink object corresponding to the specified ID, or null if not found.
+     */
     public Drink getDrinkById(int id) {
-        // SQL query to select a drink by its ID
         String query = "SELECT * FROM Drinks WHERE id = ?";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
-            // Set the parameter for the drink ID
             stmt.setInt(1, id);
-
-            // Execute the query and get the result set
             try (ResultSet rs = stmt.executeQuery()) {
-                // If a drink is found, create a Drink object with the retrieved data
                 if (rs.next()) {
                     Drink drink = new Drink(
                             rs.getInt("id"),
                             rs.getString("name"),
                             rs.getBoolean("isAlcoholic")
                     );
-
-                    // Log a success message
                     logger.info("Drink retrieved: " + drink.getName());
-                    return drink;  // Return the Drink object
+                    return drink;
                 }
             }
         } catch (SQLException e) {
-            // Log an error message in case of failure
             logger.log(Level.SEVERE, "Failed to retrieve drink with ID: " + id, e);
         }
-        return null;  // Return null if no drink is found or if an error occurs
+        return null;
     }
 
-    // Method to retrieve all drinks from the database
+    /**
+     * Retrieves all drinks from the database.
+     *
+     * @return a list of Drink objects representing all drinks in the database.
+     */
     public List<Drink> getAllDrinks() {
-        // SQL query to select all drinks
         String query = "SELECT * FROM Drinks";
         List<Drink> drinks = new ArrayList<>();
         try (PreparedStatement stmt = connection.prepareStatement(query); ResultSet rs = stmt.executeQuery()) {
-            // Iterate through the result set and create Drink objects for each row
             while (rs.next()) {
                 Drink drink = new Drink(
                         rs.getInt("id"),
                         rs.getString("name"),
                         rs.getBoolean("isAlcoholic")
                 );
-                drinks.add(drink);  // Add each Drink object to the list
+                drinks.add(drink);
             }
-
-            // Log a success message
             logger.info("All drinks retrieved successfully");
         } catch (SQLException e) {
-            // Log an error message in case of failure
             logger.log(Level.SEVERE, "Failed to retrieve all drinks", e);
         }
-        return drinks;  // Return the list of drinks
+        return drinks;
     }
 
-    // Method to update an existing drink in the database
+    /**
+     * Updates an existing drink in the database.
+     *
+     * @param drink the Drink object containing the updated information.
+     */
     public void updateDrink(Drink drink) {
-        // SQL query to update a drink's information
         String query = "UPDATE Drinks SET name = ?, isAlcoholic = ? WHERE id = ?";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
-            // Set the parameters for the name, isAlcoholic fields, and the drink ID
             stmt.setString(1, drink.getName());
             stmt.setBoolean(2, drink.isAlcoholic());
             stmt.setInt(3, drink.getId());
-
-            // Execute the query to update the drink
             stmt.executeUpdate();
-
-            // Log a success message
             logger.info("Drink updated successfully: " + drink.getName());
         } catch (SQLException e) {
-            // Log an error message in case of failure
             logger.log(Level.SEVERE, "Failed to update drink: " + drink.getName(), e);
         }
     }
 
-    // Method to delete a drink by its ID
+    /**
+     * Deletes a drink by its ID.
+     *
+     * @param id the ID of the drink to be deleted.
+     */
     public void deleteDrink(int id) {
-        // SQL query to delete a drink by its ID
         String query = "DELETE FROM Drinks WHERE id = ?";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
-            // Set the parameter for the drink ID
             stmt.setInt(1, id);
-
-            // Execute the query to delete the drink
             stmt.executeUpdate();
-
-            // Log a success message
             logger.info("Drink deleted with ID: " + id);
         } catch (SQLException e) {
-            // Log an error message in case of failure
             logger.log(Level.SEVERE, "Failed to delete drink with ID: " + id, e);
         }
     }

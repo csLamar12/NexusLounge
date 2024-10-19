@@ -1,52 +1,57 @@
 //Author: Danielle Johns
 package Model;
 
-// The Drink class represents a drink with an ID, name, and whether it is alcoholic or not.
+/**
+ * Represents a drink with an ID, name, and alcoholic status.
+ */
 public class Drink {
-
-    // Private fields to store the drink's unique ID, name, and alcoholic status
     private int drinkId;
     private String name;
     private boolean isAlcoholic;
 
-    // Constructor to initialize a Drink object with specific values for drinkId, name, and isAlcoholic
+    /**
+     * Constructs a Drink object with the specified drinkId, name, and alcoholic status.
+     *
+     * @param drinkId the unique ID of the drink
+     * @param name the name of the drink
+     * @param isAlcoholic whether the drink is alcoholic
+     */
     public Drink(int drinkId, String name, boolean isAlcoholic) {
-        this.drinkId = drinkId;             // Unique identifier for the drink
-        this.name = name;                   // Name of the drink
-        this.isAlcoholic = isAlcoholic;     // Boolean indicating if the drink contains alcohol
+        this.drinkId = drinkId;
+        this.name = name;
+        this.isAlcoholic = isAlcoholic;
     }
 
-    // Getter method to retrieve the drink's ID
+    // Getter and Setter for drinkId
     public int getId() {
         return drinkId;
     }
 
-    // Setter method to update the drink's ID
     public void setId(int id) {
         this.drinkId = id;
     }
 
-    // Getter method to retrieve the name of the drink
+    // Getter and Setter for name
     public String getName() {
         return name;
     }
 
-    // Setter method to update the name of the drink
     public void setName(String name) {
         this.name = name;
     }
 
-    // Getter method to check if the drink is alcoholic
+    // Getter and Setter for isAlcoholic
     public boolean isAlcoholic() {
         return isAlcoholic;
     }
 
-    // Setter method to update the alcoholic status of the drink
     public void setAlcoholic(boolean isAlcoholic) {
         this.isAlcoholic = isAlcoholic;
     }
 
-    // Overriding the toString() method to provide a string representation of a Drink object
+    /**
+     * Returns a string representation of the Drink object, showing the ID, name, and alcoholic status.
+     */
     @Override
     public String toString() {
         return "Drink [id=" + drinkId + ", name=" + name + ", isAlcoholic=" + isAlcoholic + "]";

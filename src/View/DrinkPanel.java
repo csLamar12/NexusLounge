@@ -6,22 +6,30 @@ import Model.Drink; // Import Drink class from the model package
 import javax.swing.*;
 import java.awt.*;
 
-// DrinkPanel is a custom JPanel component designed to display information about a Drink object.
+/**
+ * The DrinkPanel class is a custom JPanel component designed to display information about a Drink object.
+ * It uses a 3x3 grid layout to position drink-related elements such as the drink name, image,
+ * and controls for adjusting the quantity.
+ */
 public class DrinkPanel extends JPanel {
 
     // JLabel to display the name of the drink
     private final JLabel drinkNameLabel;
 
-    // JLabel to display whether the drink is alcoholic or non-alcoholic
-    private final JLabel isAlcoholicLabel;
+    // Buttons and quantity components
+    private final JButton minusButton;
+    private final JButton plusButton;
+    private final JTextField quantityField;
 
-    // Constructor that creates a DrinkPanel for the given Drink object
+    /**
+     * Constructor that initializes the DrinkPanel with the provided Drink object.
+     *
+     * @param drink the Drink object containing the drink information to display
+     */
     public DrinkPanel(Drink drink) {
-        // Set the layout of the panel to BorderLayout for positioning components
-        setLayout(new BorderLayout());
-
-        // Set the preferred size of the panel to 200x100 pixels
-        setPreferredSize(new Dimension(200, 100));
+        // Set the layout of the panel to GridBagLayout for precise component positioning
+        setLayout(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
 
         // Set the background color of the panel to light gray
         setBackground(Color.LIGHT_GRAY);
@@ -29,32 +37,56 @@ public class DrinkPanel extends JPanel {
         // Add a black border around the panel with a thickness of 2 pixels
         setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
 
-        // Initialize the drinkNameLabel with the drink's name, set the font to bold 18-point Arial,
-        // and center the text horizontally within the label
-        drinkNameLabel = new JLabel(drink.getName());
+        // Add the image placeholder (spanning all 3 columns)
+        JLabel imageLabel = new JLabel("Drink Image", SwingConstants.CENTER); // Placeholder for image
+        imageLabel.setPreferredSize(new Dimension(200, 100)); // Placeholder size
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.gridwidth = 3;  // Span all 3 columns
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        add(imageLabel, gbc);
+
+        // Initialize the drinkNameLabel with the drink's name and center the text
+        drinkNameLabel = new JLabel(drink.getName(), SwingConstants.CENTER);
         drinkNameLabel.setFont(new Font("Arial", Font.BOLD, 18));
-        drinkNameLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.gridwidth = 3;  // Span all 3 columns
+        gbc.insets = new Insets(5, 0, 5, 0);  // Add some padding around the label
+        add(drinkNameLabel, gbc);
 
-        // Determine if the drink is alcoholic or non-alcoholic and create the corresponding label
-        String alcoholicStatus = drink.isAlcoholic() ? "Alcoholic" : "Non-Alcoholic";
-        isAlcoholicLabel = new JLabel(alcoholicStatus);
-        isAlcoholicLabel.setFont(new Font("Arial", Font.PLAIN, 14));
-        isAlcoholicLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        // Add the minus button, quantity field, and plus button in the third row
 
-        // Add the drink name label to the top (NORTH) of the panel
-        add(drinkNameLabel, BorderLayout.NORTH);
+        // Minus button
+        minusButton = new JButton("-");
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        gbc.gridwidth = 1;  // Occupy one column
+        gbc.fill = GridBagConstraints.NONE;
+        add(minusButton, gbc);
 
-        // Add the alcoholic status label to the bottom (SOUTH) of the panel
-        add(isAlcoholicLabel, BorderLayout.SOUTH);
+        // Quantity field (center column)
+        quantityField = new JTextField("1", 3);
+        quantityField.setHorizontalAlignment(SwingConstants.CENTER);
+        gbc.gridx = 1;
+        gbc.gridy = 2;
+        add(quantityField, gbc);
+
+        // Plus button
+        plusButton = new JButton("+");
+        gbc.gridx = 2;
+        gbc.gridy = 2;
+        add(plusButton, gbc);
     }
 
-    // Method to update the information displayed in the panel with a new Drink object
+    /**
+     * Updates the DrinkPanel's displayed information based on a new Drink object.
+     * This is useful for refreshing the panel when the drink details are changed.
+     *
+     * @param drink the new Drink object containing updated information
+     */
     public void updateDrinkInfo(Drink drink) {
         // Update the drink name label with the new drink's name
         drinkNameLabel.setText(drink.getName());
-
-        // Update the alcoholic status label with "Alcoholic" or "Non-Alcoholic"
-        String alcoholicStatus = drink.isAlcoholic() ? "Alcoholic" : "Non-Alcoholic";
-        isAlcoholicLabel.setText(alcoholicStatus);
     }
 }
