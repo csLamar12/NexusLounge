@@ -2,8 +2,8 @@ package View;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
+import java.awt.event.*;
+import java.util.InputMismatchException;
 
 public final class PlaceHolderTF extends JTextField {
 
@@ -25,6 +25,29 @@ public final class PlaceHolderTF extends JTextField {
             public void focusLost(FocusEvent e) {
                 if(getText().isEmpty()) {
                     setText(placeHolder);
+                }
+            }
+        });
+
+        addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                if (!Character.isDigit(e.getKeyChar())) {
+                    throw new InputMismatchException();
+                }
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (!Character.isDigit(e.getKeyChar())) {
+                    throw new InputMismatchException();
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                if (!Character.isDigit(e.getKeyChar())) {
+                    throw new InputMismatchException();
                 }
             }
         });

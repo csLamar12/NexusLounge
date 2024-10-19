@@ -1,5 +1,8 @@
 package Model;
 
+/**
+ * Main Data model for the application
+ */
 public class DataModel {
 
     /**

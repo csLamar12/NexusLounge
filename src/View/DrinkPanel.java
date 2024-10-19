@@ -13,13 +13,22 @@ import java.awt.*;
  */
 public class DrinkPanel extends JPanel {
 
+    private ImageIcon drinkImg;
     // JLabel to display the name of the drink
     private final JLabel drinkNameLabel;
 
     // Buttons and quantity components
-    private final JButton minusButton;
-    private final JButton plusButton;
-    private final JTextField quantityField;
+    private JButton minusButton;
+    private JButton plusButton;
+    private JTextField quantityField;
+    private ImageIcon minusButtonIconActive;
+    private ImageIcon plusButtonIconActive;
+    private ImageIcon minusButtonIconInactive;
+    private ImageIcon plusButtonIconInactive;
+    private final String minusIconPathInactive = "src/Resources/Buttons/MinusButtonInActive.png";
+    private final String minusIconPathActive = "src/Resources/Buttons/MinusButtonActive.png";
+    private final String plusIconPathInactive = "src/Resources/Buttons/PlusButtonInActive.png";
+    private final String plusIconPathActive = "src/Resources/Buttons/PlusButtonActive.png";
 
     /**
      * Constructor that initializes the DrinkPanel with the provided Drink object.
@@ -27,18 +36,23 @@ public class DrinkPanel extends JPanel {
      * @param drink the Drink object containing the drink information to display
      */
     public DrinkPanel(Drink drink) {
+        minusButtonIconActive = new ImageIcon(minusIconPathActive);
+        plusButtonIconInactive = new ImageIcon(plusIconPathInactive);
+        String drinkImgPath = String.format("src/Resources/Drinks/%d.png", drink.getId());
         // Set the layout of the panel to GridBagLayout for precise component positioning
         setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
+        gbc.anchor = GridBagConstraints.CENTER;
 
         // Set the background color of the panel to light gray
-        setBackground(Color.LIGHT_GRAY);
+        setBackground(Color.WHITE);
 
         // Add a black border around the panel with a thickness of 2 pixels
-        setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+        setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, 1));
 
         // Add the image placeholder (spanning all 3 columns)
-        JLabel imageLabel = new JLabel("Drink Image", SwingConstants.CENTER); // Placeholder for image
+        drinkImg = new ImageIcon(drinkImgPath);
+        JLabel imageLabel = new JLabel(drinkImg, SwingConstants.CENTER); // Placeholder for image
         imageLabel.setPreferredSize(new Dimension(200, 100)); // Placeholder size
         gbc.gridx = 0;
         gbc.gridy = 0;
@@ -58,24 +72,37 @@ public class DrinkPanel extends JPanel {
         // Add the minus button, quantity field, and plus button in the third row
 
         // Minus button
-        minusButton = new JButton("-");
+        minusButtonIconInactive = new ImageIcon(minusIconPathInactive);
+        minusButton = new JButton(minusButtonIconInactive);
+        minusButton.setOpaque(false);
+        minusButton.setBorderPainted(false);
+        gbc.insets = new Insets(5, 12, 5, 0);
         gbc.gridx = 0;
         gbc.gridy = 2;
         gbc.gridwidth = 1;  // Occupy one column
         gbc.fill = GridBagConstraints.NONE;
+        gbc.anchor = GridBagConstraints.EAST;
         add(minusButton, gbc);
 
         // Quantity field (center column)
-        quantityField = new JTextField("1", 3);
+        quantityField = new JTextField("0", 5);
+        quantityField.setFont(new Font("Arial", Font.BOLD, 18));
         quantityField.setHorizontalAlignment(SwingConstants.CENTER);
+        quantityField.setBorder(BorderFactory.createLineBorder(new Color(0,0,0,100), 2));
+        gbc.insets = new Insets(5, 0, 5, 0);
         gbc.gridx = 1;
         gbc.gridy = 2;
         add(quantityField, gbc);
 
         // Plus button
-        plusButton = new JButton("+");
+        plusButtonIconActive = new ImageIcon(plusIconPathActive);
+        plusButton = new JButton(plusButtonIconActive);
+        plusButton.setOpaque(false);
+        plusButton.setBorderPainted(false);
+        gbc.insets = new Insets(5, 0, 5, 0);
         gbc.gridx = 2;
         gbc.gridy = 2;
+        gbc.anchor = GridBagConstraints.WEST;
         add(plusButton, gbc);
     }
 
@@ -88,5 +115,68 @@ public class DrinkPanel extends JPanel {
     public void updateDrinkInfo(Drink drink) {
         // Update the drink name label with the new drink's name
         drinkNameLabel.setText(drink.getName());
+    }
+
+    public JLabel getDrinkNameLabel() {
+        return drinkNameLabel;
+    }
+
+    public JButton getMinusButton() {
+        return minusButton;
+    }
+
+    public JButton getPlusButton() {
+        return plusButton;
+    }
+
+    public JTextField getQuantityField() {
+        return quantityField;
+    }
+
+    public ImageIcon getPlusButtonIconActive() {
+        return plusButtonIconActive;
+    }
+
+    public ImageIcon getMinusButtonIconInactive() {
+        return minusButtonIconInactive;
+    }
+
+    public String getMinusIconPathInactive() {
+        return minusIconPathInactive;
+    }
+
+    public String getMinusIconPathActive() {
+        return minusIconPathActive;
+    }
+
+    public String getPlusIconPathInactive() {
+        return plusIconPathInactive;
+    }
+
+    public String getPlusIconPathActive() {
+        return plusIconPathActive;
+    }
+
+    public void setMinusButton(JButton minusButton) {
+        this.minusButton = minusButton;
+    }
+    public void setPlusButton(JButton plusButton) {
+        this.plusButton = plusButton;
+    }
+    public void changeButtonStatusToInactive(JButton button) {
+        if (button == this.plusButton) {
+            plusButton.setIcon(plusButtonIconInactive);
+        }
+        if (button == this.minusButton) {
+            minusButton.setIcon(minusButtonIconInactive);
+        }
+    }
+    public void changeButtonStatusToActive(JButton button) {
+        if (button == this.plusButton) {
+            plusButton.setIcon(plusButtonIconActive);
+        }
+        if (button == this.minusButton) {
+            minusButton.setIcon(minusButtonIconActive);
+        }
     }
 }

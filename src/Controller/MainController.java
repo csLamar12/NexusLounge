@@ -1,8 +1,15 @@
 package Controller;
 
 import Model.DataModel;
+import View.DrinkPanel;
 import View.LoginScreen;
 import View.MainView;
+
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.security.Key;
+import java.util.InputMismatchException;
 
 /**
  * Main controller class for the application
@@ -10,14 +17,10 @@ import View.MainView;
  * @author Lamar Haye
  */
 public class MainController {
-    /**
-     * Main Data model for the application
-     */
+
     private DataModel model;
-    /**
-     * Main view of the application
-     */
     private MainView view;
+    private DrinkPanelController dpController;
 
     /**
      * Primary Constructor for the MainController class
@@ -34,10 +37,11 @@ public class MainController {
      * Initialize the application by showing the splash screen and login screen.
      */
     public void initApp(){
-        view.showSplashScreen();
-        view.showLoginScreen();
-        bindLoginScreenButtonEvents();
-        // next screen/event
+//        view.showSplashScreen();
+//        view.showLoginScreen();
+//        bindLoginScreenButtonEvents();
+        view.showMainMenuScreen();
+        dpController = new DrinkPanelController((DrinkPanel) view.getMainMenuScreen().getDrinkPanel());
     }
 
     /**
@@ -48,7 +52,8 @@ public class MainController {
         String password = view.getLoginScreen().getPassword();
         if (model.authenticateUser(username, password)){
             view.getLoginScreen().displayMessage("Login Successful");
-        view.getLoginScreen().dispose();
+            view.getLoginScreen().dispose();
+            view.showMainMenuScreen();
         } else
             view.getLoginScreen().displayMessage("Login Failed");
     }
@@ -58,6 +63,7 @@ public class MainController {
      */
     public void guestLogin(){
         view.getLoginScreen().dispose();
+        view.showMainMenuScreen();
     }
 
     /**
