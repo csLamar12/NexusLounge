@@ -10,6 +10,8 @@ import org.apache.logging.log4j.Logger;
  * The DrinkSQLProvider class provides SQL database operations for the Drink entity,
  * including inserting, retrieving, updating, and deleting drinks in the database.
  * It interacts with the Drinks table in the database.
+ *
+ * @author Danielle Johns
  */
 public class DrinkSQLProvider extends SQLProvider implements IDrinkSvc {
 
@@ -31,7 +33,7 @@ public class DrinkSQLProvider extends SQLProvider implements IDrinkSvc {
      * @param drink the Drink object containing the information to be inserted.
      */
     public void insertDrink(Drink drink) {
-        query = "INSERT INTO Drinks (Name, IsAlcoholic) VALUES (?, ?)";
+        query = "INSERT INTO Drink (Name, IsAlcoholic) VALUES (?, ?)";
         try {
             ps = conn.prepareStatement(query);
             ps.setString(1, drink.getName());
@@ -50,7 +52,7 @@ public class DrinkSQLProvider extends SQLProvider implements IDrinkSvc {
      * @return the Drink object corresponding to the specified ID, or null if not found.
      */
     public Drink getDrinkById(int id) {
-        query = "SELECT * FROM Drinks WHERE id = ?";
+        query = "SELECT * FROM Drink WHERE id = ?";
         try {
             ps = conn.prepareStatement(query);
             ps.setInt(1, id);
@@ -76,25 +78,27 @@ public class DrinkSQLProvider extends SQLProvider implements IDrinkSvc {
      * @param isAlcoholic the type of the drink to be retrieved.
      * @return the Drink object corresponding to the specified type, or null if not found.
      */
-    public Drink getDrinkByType(boolean isAlcoholic) {
-        query = "SELECT * FROM Drinks WHERE id = ?";
+    public List<Drink> getDrinkByType(boolean isAlcoholic) {
+        query = "SELECT * FROM Drink WHERE IsAlcoholic = ?";
+        List<Drink> drinks = new ArrayList<>();
         try {
             ps = conn.prepareStatement(query);
             ps.setInt(1, isAlcoholic ? 1 : 0);
             rs = ps.executeQuery();
-            if (rs.next()) {
+            while (rs.next()) {
                 Drink drink = new Drink(
                         rs.getInt("id"),
                         rs.getString("name"),
                         rs.getBoolean("isAlcoholic")
                 );
                 LOGGER.info("Drink retrieved: {}", drink.getName());
-                return drink;
+                drinks.add(drink);
             }
+            return drinks;
         } catch (SQLException e) {
             LOGGER.error("Failed to retrieve drink with type: {}", isAlcoholic, e);
+            return null;
         }
-        return null;
     }
 
     /**
@@ -103,7 +107,7 @@ public class DrinkSQLProvider extends SQLProvider implements IDrinkSvc {
      * @return a list of Drink objects representing all drinks in the database.
      */
     public List<Drink> getAllDrinks() {
-        query = "SELECT * FROM Drinks";
+        query = "SELECT * FROM Drink";
         List<Drink> drinks = new ArrayList<>();
         try {
             stat = conn.createStatement();
@@ -129,7 +133,7 @@ public class DrinkSQLProvider extends SQLProvider implements IDrinkSvc {
      * @param drink the Drink object containing the updated information.
      */
     public void updateDrink(Drink drink) {
-        String query = "UPDATE Drinks SET name = ?, isAlcoholic = ? WHERE id = ?";
+        String query = "UPDATE Drink SET name = ?, isAlcoholic = ? WHERE id = ?";
         try {
             ps = conn.prepareStatement(query);
             ps.setString(1, drink.getName());
@@ -148,7 +152,7 @@ public class DrinkSQLProvider extends SQLProvider implements IDrinkSvc {
      * @param id the ID of the drink to be deleted.
      */
     public void deleteDrink(int id) {
-        String query = "DELETE FROM Drinks WHERE id = ?";
+        String query = "DELETE FROM Drink WHERE id = ?";
         try {
             ps = conn.prepareStatement(query);
             ps.setInt(1, id);

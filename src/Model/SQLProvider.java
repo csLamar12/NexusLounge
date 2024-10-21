@@ -10,7 +10,7 @@ public abstract class SQLProvider {
     protected Connection conn = null;
     protected PreparedStatement ps = null;
     protected ResultSet rs = null;
-    private static final String DRIVER = "com.mysql.jdbc.Driver";
+    private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
 
     private static final Logger LOGGER = LogManager.getLogger(SQLProvider.class);
     public SQLProvider() {
@@ -19,7 +19,7 @@ public abstract class SQLProvider {
             Class.forName(DRIVER);
             String url = "jdbc:mysql://localhost:3306/NexusLounge";
             conn = DriverManager.getConnection(url, "root", "root");
-
+            System.out.println("Connection successful.");
         }
         catch (ClassNotFoundException | SQLException | NullPointerException e){
             LOGGER.error(e.getMessage());

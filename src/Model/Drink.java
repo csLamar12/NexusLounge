@@ -8,6 +8,7 @@ public class Drink {
     private int drinkId;
     private String name;
     private boolean isAlcoholic;
+    private String description;
 
     /**
      * Constructs a Drink object with the specified drinkId, name, and alcoholic status.

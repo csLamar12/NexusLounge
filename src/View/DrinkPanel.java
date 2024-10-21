@@ -36,6 +36,11 @@ public class DrinkPanel extends JPanel {
      * @param drink the Drink object containing the drink information to display
      */
     public DrinkPanel(Drink drink) {
+//        try {
+//            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+//        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
+//            ex.printStackTrace();
+//        }
         minusButtonIconActive = new ImageIcon(minusIconPathActive);
         plusButtonIconInactive = new ImageIcon(plusIconPathInactive);
         String drinkImgPath = String.format("src/Resources/Drinks/%d.png", drink.getId());
@@ -63,6 +68,7 @@ public class DrinkPanel extends JPanel {
         // Initialize the drinkNameLabel with the drink's name and center the text
         drinkNameLabel = new JLabel(drink.getName(), SwingConstants.CENTER);
         drinkNameLabel.setFont(new Font("Arial", Font.BOLD, 18));
+        drinkNameLabel.setToolTipText("Drink Name");
         gbc.gridx = 0;
         gbc.gridy = 1;
         gbc.gridwidth = 3;  // Span all 3 columns
@@ -76,6 +82,7 @@ public class DrinkPanel extends JPanel {
         minusButton = new JButton(minusButtonIconInactive);
         minusButton.setOpaque(false);
         minusButton.setBorderPainted(false);
+        minusButton.setToolTipText("Lower Quantity");
         gbc.insets = new Insets(5, 12, 5, 0);
         gbc.gridx = 0;
         gbc.gridy = 2;
@@ -99,6 +106,7 @@ public class DrinkPanel extends JPanel {
         plusButton = new JButton(plusButtonIconActive);
         plusButton.setOpaque(false);
         plusButton.setBorderPainted(false);
+        plusButton.setToolTipText("Add drink");
         gbc.insets = new Insets(5, 0, 5, 0);
         gbc.gridx = 2;
         gbc.gridy = 2;

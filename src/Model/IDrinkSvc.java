@@ -7,6 +7,6 @@ public interface IDrinkSvc {
     public void updateDrink(Drink drink);
     public void deleteDrink(int Id);
     public Drink getDrinkById(int Id);
-    public Drink getDrinkByType(boolean isAlcoholic);
+    public List<Drink> getDrinkByType(boolean isAlcoholic);
     public List<Drink> getAllDrinks();
 }

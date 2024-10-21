@@ -5,12 +5,6 @@ import View.DrinkPanel;
 import View.LoginScreen;
 import View.MainView;
 
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.security.Key;
-import java.util.InputMismatchException;
-
 /**
  * Main controller class for the application
  *
@@ -20,7 +14,7 @@ public class MainController {
 
     private DataModel model;
     private MainView view;
-    private DrinkPanelController dpController;
+    private MainMenuController mainMenuController;
 
     /**
      * Primary Constructor for the MainController class
@@ -41,7 +35,7 @@ public class MainController {
 //        view.showLoginScreen();
 //        bindLoginScreenButtonEvents();
         view.showMainMenuScreen();
-        dpController = new DrinkPanelController((DrinkPanel) view.getMainMenuScreen().getDrinkPanel());
+        MainMenuController mMC = new MainMenuController(view.getMainMenuScreen());
     }
 
     /**
