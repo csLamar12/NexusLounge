@@ -6,10 +6,8 @@ import org.apache.logging.log4j.Logger;
 
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.*;
+import java.awt.event.*;
 import java.util.InputMismatchException;
 
 /**
@@ -51,6 +49,17 @@ public class DrinkPanelController {
                 }
             }
         });
+        drinkPanel.getMinusButton().addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                drinkPanel.getMinusButton().setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                drinkPanel.getMinusButton().setCursor(Cursor.getDefaultCursor());
+            }
+        });
         drinkPanel.getPlusButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -67,6 +76,17 @@ public class DrinkPanelController {
                     drinkPanel.getQuantityField().setText(String.valueOf(qFTxt));
                     LOGGER.warn(ex.getMessage());
                 }
+            }
+        });
+        drinkPanel.getPlusButton().addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                drinkPanel.getPlusButton().setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                drinkPanel.getPlusButton().setCursor(Cursor.getDefaultCursor());
             }
         });
     }

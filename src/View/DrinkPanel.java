@@ -41,6 +41,7 @@ public class DrinkPanel extends JPanel {
 //        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
 //            ex.printStackTrace();
 //        }
+        ToolTipManager.sharedInstance().setInitialDelay(700);
         minusButtonIconActive = new ImageIcon(minusIconPathActive);
         plusButtonIconInactive = new ImageIcon(plusIconPathInactive);
         String drinkImgPath = String.format("src/Resources/Drinks/%d.png", drink.getId());
@@ -58,6 +59,7 @@ public class DrinkPanel extends JPanel {
         // Add the image placeholder (spanning all 3 columns)
         drinkImg = new ImageIcon(drinkImgPath);
         JLabel imageLabel = new JLabel(drinkImg, SwingConstants.CENTER); // Placeholder for image
+        imageLabel.setToolTipText(drink.getDescription());
         imageLabel.setPreferredSize(new Dimension(200, 100)); // Placeholder size
         gbc.gridx = 0;
         gbc.gridy = 0;

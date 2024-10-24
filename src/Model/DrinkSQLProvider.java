@@ -33,11 +33,12 @@ public class DrinkSQLProvider extends SQLProvider implements IDrinkSvc {
      * @param drink the Drink object containing the information to be inserted.
      */
     public void insertDrink(Drink drink) {
-        query = "INSERT INTO Drink (Name, IsAlcoholic) VALUES (?, ?)";
+        query = "INSERT INTO Drink (Name, IsAlcoholic, Description) VALUES (?, ?, ?)";
         try {
             ps = conn.prepareStatement(query);
             ps.setString(1, drink.getName());
             ps.setBoolean(2, drink.isAlcoholic());
+            ps.setString(3, drink.getDescription());
             ps.executeUpdate();
             LOGGER.info("Drink inserted successfully: {}", drink.getName());
         } catch (SQLException e) {
@@ -61,7 +62,8 @@ public class DrinkSQLProvider extends SQLProvider implements IDrinkSvc {
                 Drink drink = new Drink(
                         rs.getInt("id"),
                         rs.getString("name"),
-                        rs.getBoolean("isAlcoholic")
+                        rs.getBoolean("isAlcoholic"),
+                        rs.getString("Description")
                 );
                 LOGGER.info("Drink retrieved: {}", drink.getName());
                 return drink;
@@ -89,7 +91,8 @@ public class DrinkSQLProvider extends SQLProvider implements IDrinkSvc {
                 Drink drink = new Drink(
                         rs.getInt("id"),
                         rs.getString("name"),
-                        rs.getBoolean("isAlcoholic")
+                        rs.getBoolean("isAlcoholic"),
+                        rs.getString("Description")
                 );
                 LOGGER.info("Drink retrieved: {}", drink.getName());
                 drinks.add(drink);
@@ -116,7 +119,8 @@ public class DrinkSQLProvider extends SQLProvider implements IDrinkSvc {
                 Drink drink = new Drink(
                         rs.getInt("id"),
                         rs.getString("name"),
-                        rs.getBoolean("isAlcoholic")
+                        rs.getBoolean("isAlcoholic"),
+                        rs.getString("Description")
                 );
                 drinks.add(drink);
             }
@@ -133,12 +137,13 @@ public class DrinkSQLProvider extends SQLProvider implements IDrinkSvc {
      * @param drink the Drink object containing the updated information.
      */
     public void updateDrink(Drink drink) {
-        String query = "UPDATE Drink SET name = ?, isAlcoholic = ? WHERE id = ?";
+        String query = "UPDATE Drink SET name = ?, isAlcoholic = ?, Description = ? WHERE id = ?";
         try {
             ps = conn.prepareStatement(query);
             ps.setString(1, drink.getName());
             ps.setBoolean(2, drink.isAlcoholic());
-            ps.setInt(3, drink.getId());
+            ps.setString(3, drink.getDescription());
+            ps.setInt(4, drink.getId());
             ps.executeUpdate();
             LOGGER.info("Drink updated successfully: {}", drink.getName());
         } catch (SQLException e) {

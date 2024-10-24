@@ -17,10 +17,11 @@ public class Drink {
      * @param name the name of the drink
      * @param isAlcoholic whether the drink is alcoholic
      */
-    public Drink(int drinkId, String name, boolean isAlcoholic) {
+    public Drink(int drinkId, String name, boolean isAlcoholic, String description) {
         this.drinkId = drinkId;
         this.name = name;
         this.isAlcoholic = isAlcoholic;
+        this.description = description;
     }
 
     // Getter and Setter for drinkId
@@ -50,11 +51,23 @@ public class Drink {
         this.isAlcoholic = isAlcoholic;
     }
 
+    public String getDescription() {
+        return description;
+    }
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     /**
      * Returns a string representation of the Drink object, showing the ID, name, and alcoholic status.
      */
     @Override
     public String toString() {
-        return "Drink [id=" + drinkId + ", name=" + name + ", isAlcoholic=" + isAlcoholic + "]";
+        return "Drink{" +
+                "drinkId=" + drinkId +
+                ", name='" + name + '\'' +
+                ", isAlcoholic=" + isAlcoholic +
+                ", description='" + description + '\'' +
+                '}';
     }
 }

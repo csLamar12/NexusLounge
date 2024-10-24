@@ -1,210 +1,125 @@
-2024-10-20 14:40:28.286 [main] WARN  Model.SQLProvider - Attempting to connect to database.
-2024-10-20 14:40:28.909 [main] ERROR Model.DrinkSQLProvider - Failed to retrieve drink with type: true
-java.sql.SQLSyntaxErrorException: Table 'nexuslounge.drinks' doesn't exist
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:112) ~[mysql-connector-j-9.0.0.jar:9.0.0]
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:114) ~[mysql-connector-j-9.0.0.jar:9.0.0]
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:987) ~[mysql-connector-j-9.0.0.jar:9.0.0]
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:1055) ~[mysql-connector-j-9.0.0.jar:9.0.0]
-	at Model.DrinkSQLProvider.getDrinkByType(DrinkSQLProvider.java:85) [NexusLounge/:?]
-	at Controller.MainMenuController.getAlcoholicDrinks(MainMenuController.java:22) [NexusLounge/:?]
-	at Controller.MainMenuController.<init>(MainMenuController.java:18) [NexusLounge/:?]
-	at Controller.MainController.initApp(MainController.java:38) [NexusLounge/:?]
-	at Main.main(Main.java:12) [NexusLounge/:?]
-2024-10-20 14:44:48.647 [main] WARN  Model.SQLProvider - Attempting to connect to database.
-2024-10-20 14:44:49.210 [main] ERROR Model.DrinkSQLProvider - Failed to retrieve drink with type: true
-java.sql.SQLSyntaxErrorException: Table 'nexuslounge.drinks' doesn't exist
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:112) ~[mysql-connector-j-9.0.0.jar:9.0.0]
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:114) ~[mysql-connector-j-9.0.0.jar:9.0.0]
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:987) ~[mysql-connector-j-9.0.0.jar:9.0.0]
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:1055) ~[mysql-connector-j-9.0.0.jar:9.0.0]
-	at Model.DrinkSQLProvider.getDrinkByType(DrinkSQLProvider.java:85) [NexusLounge/:?]
-	at Controller.MainMenuController.getAlcoholicDrinks(MainMenuController.java:22) [NexusLounge/:?]
-	at Controller.MainMenuController.<init>(MainMenuController.java:18) [NexusLounge/:?]
-	at Controller.MainController.initApp(MainController.java:38) [NexusLounge/:?]
-	at Main.main(Main.java:12) [NexusLounge/:?]
-2024-10-20 14:45:17.937 [main] WARN  Model.SQLProvider - Attempting to connect to database.
-2024-10-20 14:45:18.475 [main] ERROR Model.DrinkSQLProvider - Failed to retrieve drink with type: true
-java.sql.SQLSyntaxErrorException: Table 'nexuslounge.drinks' doesn't exist
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:112) ~[mysql-connector-j-9.0.0.jar:9.0.0]
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:114) ~[mysql-connector-j-9.0.0.jar:9.0.0]
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:987) ~[mysql-connector-j-9.0.0.jar:9.0.0]
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:1055) ~[mysql-connector-j-9.0.0.jar:9.0.0]
-	at Model.DrinkSQLProvider.getDrinkByType(DrinkSQLProvider.java:85) [NexusLounge/:?]
-	at Controller.MainMenuController.getAlcoholicDrinks(MainMenuController.java:22) [NexusLounge/:?]
-	at Controller.MainMenuController.<init>(MainMenuController.java:18) [NexusLounge/:?]
-	at Controller.MainController.initApp(MainController.java:38) [NexusLounge/:?]
-	at Main.main(Main.java:12) [NexusLounge/:?]
-2024-10-20 14:46:44.850 [main] WARN  Model.SQLProvider - Attempting to connect to database.
-2024-10-20 14:46:45.379 [main] ERROR Model.DrinkSQLProvider - Failed to retrieve drink with type: true
-java.sql.SQLSyntaxErrorException: Unknown column 'IsAlcoholic' in 'where clause'
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:112) ~[mysql-connector-j-9.0.0.jar:9.0.0]
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:114) ~[mysql-connector-j-9.0.0.jar:9.0.0]
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:987) ~[mysql-connector-j-9.0.0.jar:9.0.0]
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:1055) ~[mysql-connector-j-9.0.0.jar:9.0.0]
-	at Model.DrinkSQLProvider.getDrinkByType(DrinkSQLProvider.java:85) [NexusLounge/:?]
-	at Controller.MainMenuController.getAlcoholicDrinks(MainMenuController.java:22) [NexusLounge/:?]
-	at Controller.MainMenuController.<init>(MainMenuController.java:18) [NexusLounge/:?]
-	at Controller.MainController.initApp(MainController.java:38) [NexusLounge/:?]
-	at Main.main(Main.java:12) [NexusLounge/:?]
-2024-10-20 14:53:00.618 [main] WARN  Model.SQLProvider - Attempting to connect to database.
-2024-10-20 14:53:00.882 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Whiskey Sour
-2024-10-20 14:53:00.882 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Mojito
-2024-10-20 14:53:00.882 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Margarita
-2024-10-20 14:53:00.882 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Old Fashioned
-2024-10-20 14:53:00.882 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Rum Punch
-2024-10-20 14:53:00.882 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Piña Colada
-2024-10-20 14:53:00.883 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Tequila Sunrise
-2024-10-20 14:53:00.883 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Long Island Iced Tea
-2024-10-20 14:53:00.883 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Gin and Tonic
-2024-10-20 14:53:00.883 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Bloody Mary
-2024-10-20 14:56:39.167 [main] WARN  Model.SQLProvider - Attempting to connect to database.
-2024-10-20 14:56:39.394 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Whiskey Sour
-2024-10-20 14:56:39.394 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Mojito
-2024-10-20 14:56:39.395 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Margarita
-2024-10-20 14:56:39.395 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Old Fashioned
-2024-10-20 14:56:39.395 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Rum Punch
-2024-10-20 14:56:39.395 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Piña Colada
-2024-10-20 14:56:39.395 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Tequila Sunrise
-2024-10-20 14:56:39.395 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Long Island Iced Tea
-2024-10-20 14:56:39.395 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Gin and Tonic
-2024-10-20 14:56:39.395 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Bloody Mary
-2024-10-20 14:59:16.779 [main] WARN  Model.SQLProvider - Attempting to connect to database.
-2024-10-20 14:59:17.042 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Whiskey Sour
-2024-10-20 14:59:17.042 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Mojito
-2024-10-20 14:59:17.042 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Margarita
-2024-10-20 14:59:17.042 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Old Fashioned
-2024-10-20 14:59:17.042 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Rum Punch
-2024-10-20 14:59:17.042 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Piña Colada
-2024-10-20 14:59:17.042 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Tequila Sunrise
-2024-10-20 14:59:17.043 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Long Island Iced Tea
-2024-10-20 14:59:17.043 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Gin and Tonic
-2024-10-20 14:59:17.043 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Bloody Mary
-2024-10-20 15:00:18.613 [main] WARN  Model.SQLProvider - Attempting to connect to database.
-2024-10-20 15:00:18.837 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Whiskey Sour
-2024-10-20 15:00:18.837 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Mojito
-2024-10-20 15:00:18.837 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Margarita
-2024-10-20 15:00:18.837 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Old Fashioned
-2024-10-20 15:00:18.837 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Rum Punch
-2024-10-20 15:00:18.837 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Piña Colada
-2024-10-20 15:00:18.837 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Tequila Sunrise
-2024-10-20 15:00:18.837 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Long Island Iced Tea
-2024-10-20 15:00:18.837 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Gin and Tonic
-2024-10-20 15:00:18.838 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Bloody Mary
-2024-10-20 15:01:09.442 [main] WARN  Model.SQLProvider - Attempting to connect to database.
-2024-10-20 15:01:09.669 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Whiskey Sour
-2024-10-20 15:01:09.669 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Mojito
-2024-10-20 15:01:09.669 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Margarita
-2024-10-20 15:01:09.669 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Old Fashioned
-2024-10-20 15:01:09.669 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Rum Punch
-2024-10-20 15:01:09.669 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Piña Colada
-2024-10-20 15:01:09.669 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Tequila Sunrise
-2024-10-20 15:01:09.669 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Long Island Iced Tea
-2024-10-20 15:01:09.669 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Gin and Tonic
-2024-10-20 15:01:09.670 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Bloody Mary
-2024-10-20 15:01:22.729 [main] WARN  Model.SQLProvider - Attempting to connect to database.
-2024-10-20 15:01:22.952 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Whiskey Sour
-2024-10-20 15:01:22.952 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Mojito
-2024-10-20 15:01:22.952 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Margarita
-2024-10-20 15:01:22.952 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Old Fashioned
-2024-10-20 15:01:22.952 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Rum Punch
-2024-10-20 15:01:22.953 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Piña Colada
-2024-10-20 15:01:22.953 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Tequila Sunrise
-2024-10-20 15:01:22.953 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Long Island Iced Tea
-2024-10-20 15:01:22.953 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Gin and Tonic
-2024-10-20 15:01:22.953 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Bloody Mary
-2024-10-20 15:02:37.640 [main] WARN  Model.SQLProvider - Attempting to connect to database.
-2024-10-20 15:02:37.864 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Whiskey Sour
-2024-10-20 15:02:37.864 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Mojito
-2024-10-20 15:02:37.864 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Margarita
-2024-10-20 15:02:37.864 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Old Fashioned
-2024-10-20 15:02:37.864 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Rum Punch
-2024-10-20 15:02:37.865 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Piña Colada
-2024-10-20 15:02:37.865 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Tequila Sunrise
-2024-10-20 15:02:37.865 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Long Island Iced Tea
-2024-10-20 15:02:37.865 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Gin and Tonic
-2024-10-20 15:02:37.865 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Bloody Mary
-2024-10-20 15:03:21.224 [main] WARN  Model.SQLProvider - Attempting to connect to database.
-2024-10-20 15:03:21.462 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Whiskey Sour
-2024-10-20 15:03:21.462 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Mojito
-2024-10-20 15:03:21.462 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Margarita
-2024-10-20 15:03:21.462 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Old Fashioned
-2024-10-20 15:03:21.462 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Rum Punch
-2024-10-20 15:03:21.462 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Piña Colada
-2024-10-20 15:03:21.462 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Tequila Sunrise
-2024-10-20 15:03:21.463 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Long Island Iced Tea
-2024-10-20 15:03:21.463 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Gin and Tonic
-2024-10-20 15:03:21.463 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Bloody Mary
-2024-10-20 15:04:11.534 [main] WARN  Model.SQLProvider - Attempting to connect to database.
-2024-10-20 15:04:11.766 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Whiskey Sour
-2024-10-20 15:04:11.767 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Mojito
-2024-10-20 15:04:11.767 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Margarita
-2024-10-20 15:04:11.767 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Old Fashioned
-2024-10-20 15:04:11.767 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Rum Punch
-2024-10-20 15:04:11.767 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Piña Colada
-2024-10-20 15:04:11.767 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Tequila Sunrise
-2024-10-20 15:04:11.767 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Long Island Iced Tea
-2024-10-20 15:04:11.767 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Gin and Tonic
-2024-10-20 15:04:11.767 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Bloody Mary
-2024-10-20 15:24:08.366 [main] WARN  Model.SQLProvider - Attempting to connect to database.
-2024-10-20 15:24:08.643 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Whiskey Sour
-2024-10-20 15:24:08.643 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Mojito
-2024-10-20 15:24:08.643 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Margarita
-2024-10-20 15:24:08.644 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Old Fashioned
-2024-10-20 15:24:08.644 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Rum Punch
-2024-10-20 15:24:08.644 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Piña Colada
-2024-10-20 15:24:08.644 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Tequila Sunrise
-2024-10-20 15:24:08.644 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Long Island Iced Tea
-2024-10-20 15:24:08.644 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Gin and Tonic
-2024-10-20 15:24:08.644 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Bloody Mary
-2024-10-20 15:24:09.076 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Virgin Mojito
-2024-10-20 15:24:09.076 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Lemonade
-2024-10-20 15:24:09.076 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Iced Tea
-2024-10-20 15:24:09.076 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Coca-Cola
-2024-10-20 15:24:09.077 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Orange Juice
-2024-10-20 15:24:09.077 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Apple Juice
-2024-10-20 15:24:09.077 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Sparkling Water
-2024-10-20 15:24:09.077 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Ginger Beer
-2024-10-20 15:24:09.077 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Shirley Temple
-2024-10-20 15:24:09.077 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Smoothie
-2024-10-20 15:30:36.729 [main] WARN  Model.SQLProvider - Attempting to connect to database.
-2024-10-20 15:30:37.011 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Whiskey Sour
-2024-10-20 15:30:37.011 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Mojito
-2024-10-20 15:30:37.011 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Margarita
-2024-10-20 15:30:37.012 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Old Fashioned
-2024-10-20 15:30:37.012 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Rum Punch
-2024-10-20 15:30:37.012 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Piña Colada
-2024-10-20 15:30:37.012 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Tequila Sunrise
-2024-10-20 15:30:37.012 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Long Island Iced Tea
-2024-10-20 15:30:37.012 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Gin and Tonic
-2024-10-20 15:30:37.012 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Bloody Mary
-2024-10-20 15:30:37.442 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Virgin Mojito
-2024-10-20 15:30:37.442 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Lemonade
-2024-10-20 15:30:37.442 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Iced Tea
-2024-10-20 15:30:37.442 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Coca-Cola
-2024-10-20 15:30:37.443 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Orange Juice
-2024-10-20 15:30:37.443 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Apple Juice
-2024-10-20 15:30:37.443 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Sparkling Water
-2024-10-20 15:30:37.443 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Ginger Beer
-2024-10-20 15:30:37.443 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Shirley Temple
-2024-10-20 15:30:37.443 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Smoothie
-2024-10-20 15:31:20.596 [main] WARN  Model.SQLProvider - Attempting to connect to database.
-2024-10-20 15:31:20.831 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Whiskey Sour
-2024-10-20 15:31:20.831 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Mojito
-2024-10-20 15:31:20.831 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Margarita
-2024-10-20 15:31:20.831 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Old Fashioned
-2024-10-20 15:31:20.831 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Rum Punch
-2024-10-20 15:31:20.831 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Piña Colada
-2024-10-20 15:31:20.831 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Tequila Sunrise
-2024-10-20 15:31:20.831 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Long Island Iced Tea
-2024-10-20 15:31:20.831 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Gin and Tonic
-2024-10-20 15:31:20.832 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Bloody Mary
-2024-10-20 15:31:21.061 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Virgin Mojito
-2024-10-20 15:31:21.061 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Lemonade
-2024-10-20 15:31:21.061 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Iced Tea
-2024-10-20 15:31:21.061 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Coca-Cola
-2024-10-20 15:31:21.062 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Orange Juice
-2024-10-20 15:31:21.062 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Apple Juice
-2024-10-20 15:31:21.062 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Sparkling Water
-2024-10-20 15:31:21.062 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Ginger Beer
-2024-10-20 15:31:21.062 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Shirley Temple
-2024-10-20 15:31:21.062 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Smoothie
+2024-10-22 15:23:50.214 [main] WARN  Model.SQLProvider - Attempting to connect to database.
+2024-10-22 15:23:50.442 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Whiskey Sour
+2024-10-22 15:23:50.442 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Mojito
+2024-10-22 15:23:50.442 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Margarita
+2024-10-22 15:23:50.442 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Old Fashioned
+2024-10-22 15:23:50.442 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Rum Punch
+2024-10-22 15:23:50.442 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Piña Colada
+2024-10-22 15:23:50.442 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Tequila Sunrise
+2024-10-22 15:23:50.442 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Long Island Iced Tea
+2024-10-22 15:23:50.442 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Gin and Tonic
+2024-10-22 15:23:50.442 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Bloody Mary
+2024-10-22 15:23:50.689 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Virgin Mojito
+2024-10-22 15:23:50.689 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Lemonade
+2024-10-22 15:23:50.689 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Iced Tea
+2024-10-22 15:23:50.689 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Coca-Cola
+2024-10-22 15:23:50.689 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Orange Juice
+2024-10-22 15:23:50.689 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Apple Juice
+2024-10-22 15:23:50.689 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Sparkling Water
+2024-10-22 15:23:50.689 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Ginger Beer
+2024-10-22 15:23:50.689 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Shirley Temple
+2024-10-22 15:23:50.689 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Smoothie
+2024-10-22 15:26:24.213 [main] WARN  Model.SQLProvider - Attempting to connect to database.
+2024-10-22 15:26:24.463 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Whiskey Sour
+2024-10-22 15:26:24.463 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Mojito
+2024-10-22 15:26:24.463 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Margarita
+2024-10-22 15:26:24.463 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Old Fashioned
+2024-10-22 15:26:24.463 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Rum Punch
+2024-10-22 15:26:24.463 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Piña Colada
+2024-10-22 15:26:24.463 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Tequila Sunrise
+2024-10-22 15:26:24.463 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Long Island Iced Tea
+2024-10-22 15:26:24.463 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Gin and Tonic
+2024-10-22 15:26:24.463 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Bloody Mary
+2024-10-22 15:26:24.714 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Virgin Mojito
+2024-10-22 15:26:24.714 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Lemonade
+2024-10-22 15:26:24.714 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Iced Tea
+2024-10-22 15:26:24.714 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Coca-Cola
+2024-10-22 15:26:24.714 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Orange Juice
+2024-10-22 15:26:24.714 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Apple Juice
+2024-10-22 15:26:24.714 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Sparkling Water
+2024-10-22 15:26:24.714 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Ginger Beer
+2024-10-22 15:26:24.714 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Shirley Temple
+2024-10-22 15:26:24.714 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Smoothie
+2024-10-22 15:27:47.377 [main] WARN  Model.SQLProvider - Attempting to connect to database.
+2024-10-22 15:27:47.608 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Whiskey Sour
+2024-10-22 15:27:47.608 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Mojito
+2024-10-22 15:27:47.608 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Margarita
+2024-10-22 15:27:47.608 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Old Fashioned
+2024-10-22 15:27:47.608 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Rum Punch
+2024-10-22 15:27:47.609 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Piña Colada
+2024-10-22 15:27:47.609 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Tequila Sunrise
+2024-10-22 15:27:47.609 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Long Island Iced Tea
+2024-10-22 15:27:47.609 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Gin and Tonic
+2024-10-22 15:27:47.609 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Bloody Mary
+2024-10-22 15:27:47.854 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Virgin Mojito
+2024-10-22 15:27:47.855 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Lemonade
+2024-10-22 15:27:47.855 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Iced Tea
+2024-10-22 15:27:47.855 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Coca-Cola
+2024-10-22 15:27:47.855 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Orange Juice
+2024-10-22 15:27:47.855 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Apple Juice
+2024-10-22 15:27:47.855 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Sparkling Water
+2024-10-22 15:27:47.855 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Ginger Beer
+2024-10-22 15:27:47.855 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Shirley Temple
+2024-10-22 15:27:47.855 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Smoothie
+2024-10-22 15:28:02.972 [main] WARN  Model.SQLProvider - Attempting to connect to database.
+2024-10-22 15:28:03.205 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Whiskey Sour
+2024-10-22 15:28:03.205 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Mojito
+2024-10-22 15:28:03.205 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Margarita
+2024-10-22 15:28:03.205 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Old Fashioned
+2024-10-22 15:28:03.205 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Rum Punch
+2024-10-22 15:28:03.205 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Piña Colada
+2024-10-22 15:28:03.205 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Tequila Sunrise
+2024-10-22 15:28:03.205 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Long Island Iced Tea
+2024-10-22 15:28:03.205 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Gin and Tonic
+2024-10-22 15:28:03.205 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Bloody Mary
+2024-10-22 15:28:03.448 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Virgin Mojito
+2024-10-22 15:28:03.448 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Lemonade
+2024-10-22 15:28:03.448 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Iced Tea
+2024-10-22 15:28:03.448 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Coca-Cola
+2024-10-22 15:28:03.448 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Orange Juice
+2024-10-22 15:28:03.448 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Apple Juice
+2024-10-22 15:28:03.448 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Sparkling Water
+2024-10-22 15:28:03.448 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Ginger Beer
+2024-10-22 15:28:03.448 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Shirley Temple
+2024-10-22 15:28:03.448 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Smoothie
+2024-10-24 01:43:20.489 [main] WARN  Model.SQLProvider - Attempting to connect to database.
+2024-10-24 01:43:20.801 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Whiskey Sour
+2024-10-24 01:43:20.801 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Mojito
+2024-10-24 01:43:20.801 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Margarita
+2024-10-24 01:43:20.801 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Old Fashioned
+2024-10-24 01:43:20.801 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Rum Punch
+2024-10-24 01:43:20.801 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Piña Colada
+2024-10-24 01:43:20.802 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Tequila Sunrise
+2024-10-24 01:43:20.802 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Long Island Iced Tea
+2024-10-24 01:43:20.802 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Gin and Tonic
+2024-10-24 01:43:20.802 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Bloody Mary
+2024-10-24 01:43:20.802 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Mai Tai
+2024-10-24 01:43:20.802 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Cosmopolitan
+2024-10-24 01:43:20.802 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Daiquiri
+2024-10-24 01:43:20.802 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Sangria
+2024-10-24 01:43:20.802 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Bellini
+2024-10-24 01:43:20.802 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Moscow Mule
+2024-10-24 01:43:20.802 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Aperol Spritz
+2024-10-24 01:43:20.802 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Caipirinha
+2024-10-24 01:43:20.802 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Sidecar
+2024-10-24 01:43:20.802 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: French 75
+2024-10-24 01:43:21.237 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Virgin Mojito
+2024-10-24 01:43:21.237 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Lemonade
+2024-10-24 01:43:21.238 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Iced Tea
+2024-10-24 01:43:21.238 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Coca-Cola
+2024-10-24 01:43:21.238 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Orange Juice
+2024-10-24 01:43:21.238 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Apple Juice
+2024-10-24 01:43:21.238 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Sparkling Water
+2024-10-24 01:43:21.238 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Ginger Beer
+2024-10-24 01:43:21.238 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Shirley Temple
+2024-10-24 01:43:21.238 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Smoothie
+2024-10-24 01:43:21.238 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Fruit Punch
+2024-10-24 01:43:21.238 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Hot Chocolate
+2024-10-24 01:43:21.238 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Chai Latte
+2024-10-24 01:43:21.238 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Peach Iced Tea
+2024-10-24 01:43:21.238 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Lemon Basil Soda
+2024-10-24 01:43:21.238 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Matcha Latte
+2024-10-24 01:43:21.238 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Mint Lemonade
+2024-10-24 01:43:21.238 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Root Beer Float
+2024-10-24 01:43:21.238 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Pineapple Coconut Smoothie
+2024-10-24 01:43:21.238 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Cucumber Lemonade
