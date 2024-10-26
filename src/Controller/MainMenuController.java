@@ -23,6 +23,7 @@ public class MainMenuController {
     private List<JPanel> drinkPanels;
     private DrinkSQLProvider drinkSQLProvider = new DrinkSQLProvider();
     private DrinkPanelController dPController;
+    private List<Drink> drinks = new ArrayList<>();
 
     public MainMenuController(MainMenu mainMenu) {
         this.mainMenu = mainMenu;
@@ -31,10 +32,57 @@ public class MainMenuController {
         mainMenu.initWindow();
         this.drinkPanels = mainMenu.getAllDrinkPanels();
         for (JPanel drinkPanel : drinkPanels) {
-            dPController = new DrinkPanelController((DrinkPanel) drinkPanel);
+            dPController = new DrinkPanelController((DrinkPanel) drinkPanel, this);
         }
         bindButtonListeners();
     }
+
+    public void addToCheckoutItems(Drink drink, int quantity) {
+
+        for (Drink d : drinks) {
+            if (d.getId() == drink.getId()) {
+                d.setQuantity(quantity);
+                mainMenu.updateCheckoutItems(drinks);
+                return;
+            }
+        }
+        drink.setQuantity(quantity);
+        drinks.add(drink);
+        mainMenu.updateCheckoutItems(drinks);
+    }
+
+    public void minusFromCheckoutItems(Drink drink, int quantity) {
+        for (Drink d : drinks) {
+            if (d.equals(drink)) {
+                if (quantity == 0) {
+                    drinks.remove(d);
+                    mainMenu.updateCheckoutItems(drinks);
+                    return;
+                }
+                d.setQuantity(quantity);
+            }
+        }
+        mainMenu.updateCheckoutItems(drinks);
+    }
+
+    public void updateCheckoutList(Drink drink, int quantity) {
+        for (Drink d : drinks) {
+            if (d.equals(drink)) {
+                if (quantity == 0) {
+                    drinks.remove(d);
+                    mainMenu.updateCheckoutItems(drinks);
+                    return;
+                }
+                d.setQuantity(quantity);
+                mainMenu.updateCheckoutItems(drinks);
+                return;
+            }
+        }
+        drink.setQuantity(quantity);
+        drinks.add(drink);
+        mainMenu.updateCheckoutItems(drinks);
+    }
+
     public void bindButtonListeners() {
         mainMenu.getAlcoholicTab().addMouseListener(new MouseAdapter() {
             @Override

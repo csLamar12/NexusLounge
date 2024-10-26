@@ -5,6 +5,8 @@ import Model.Drink; // Import Drink class from the model package
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The DrinkPanel class is a custom JPanel component designed to display information about a Drink object.
@@ -14,6 +16,7 @@ import java.awt.*;
 public class DrinkPanel extends JPanel {
 
     private ImageIcon drinkImg;
+    private Drink drink;
     // JLabel to display the name of the drink
     private final JLabel drinkNameLabel;
 
@@ -41,21 +44,22 @@ public class DrinkPanel extends JPanel {
 //        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
 //            ex.printStackTrace();
 //        }
+        this.drink = drink;
         ToolTipManager.sharedInstance().setInitialDelay(700);
         minusButtonIconActive = new ImageIcon(minusIconPathActive);
         plusButtonIconInactive = new ImageIcon(plusIconPathInactive);
         String drinkImgPath = String.format("src/Resources/Drinks/%d.png", drink.getId());
         // Set the layout of the panel to GridBagLayout for precise component positioning
         setLayout(new GridBagLayout());
+        setPreferredSize(new Dimension(210, 220));
         GridBagConstraints gbc = new GridBagConstraints();
-        gbc.anchor = GridBagConstraints.CENTER;
+        gbc.anchor = GridBagConstraints.WEST;
 
         // Set the background color of the panel to light gray
         setBackground(Color.WHITE);
 
         // Add a black border around the panel with a thickness of 2 pixels
         setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, 1));
-
         // Add the image placeholder (spanning all 3 columns)
         drinkImg = new ImageIcon(drinkImgPath);
         JLabel imageLabel = new JLabel(drinkImg, SwingConstants.CENTER); // Placeholder for image
@@ -70,7 +74,18 @@ public class DrinkPanel extends JPanel {
         // Initialize the drinkNameLabel with the drink's name and center the text
         drinkNameLabel = new JLabel(drink.getName(), SwingConstants.CENTER);
         drinkNameLabel.setFont(new Font("Arial", Font.BOLD, 18));
-        drinkNameLabel.setToolTipText("Drink Name");
+        drinkNameLabel.setToolTipText(drink.getName());
+        StringBuilder name = new StringBuilder();
+        int r = 0;
+        if (drink.getName().length() > 20){
+            for (Character c : drink.getName().toCharArray()){
+                name.append(c);
+                r++;
+                if (r == 20)
+                    break;
+            }
+            drinkNameLabel.setText(name.toString());
+        }
         gbc.gridx = 0;
         gbc.gridy = 1;
         gbc.gridwidth = 3;  // Span all 3 columns
@@ -89,7 +104,6 @@ public class DrinkPanel extends JPanel {
         gbc.gridx = 0;
         gbc.gridy = 2;
         gbc.gridwidth = 1;  // Occupy one column
-        gbc.fill = GridBagConstraints.NONE;
         gbc.anchor = GridBagConstraints.EAST;
         add(minusButton, gbc);
 
@@ -188,5 +202,8 @@ public class DrinkPanel extends JPanel {
         if (button == this.minusButton) {
             minusButton.setIcon(minusButtonIconActive);
         }
+    }
+    public Drink getDrink() {
+        return this.drink;
     }
 }

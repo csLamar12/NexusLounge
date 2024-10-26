@@ -18,8 +18,9 @@ public class MainMenu extends JFrame {
     private List<JPanel> nonAlcoholicDP = new ArrayList<>();
     private List<JPanel> allDrinkPanels = new ArrayList<>();
     private GridBagConstraints c = new GridBagConstraints();
-    private JPanel alcoholicTab, nonAlcoholicTab, tabPanel;
+    private JPanel alcoholicTab, nonAlcoholicTab, tabPanel, checkoutPanel, scrollableContent;
     private JLabel tabPanelLabel;
+    private List<Drink> checkoutList;
 
 
     public MainMenu() {
@@ -43,6 +44,13 @@ public class MainMenu extends JFrame {
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         add(scrollPane, BorderLayout.CENTER);
+
+        checkoutPanel = new JPanel();
+        checkoutPanel.setBackground(Color.WHITE);
+        checkoutPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+        checkoutPanel.setLayout(new GridBagLayout());
+        checkoutPanel.setPreferredSize(new Dimension(300, 600));
+        add(checkoutPanel, BorderLayout.EAST);
     }
     public void initWindow(){
         addComponents();
@@ -70,8 +78,78 @@ public class MainMenu extends JFrame {
         c.insets = new Insets(10, 10, 10, 0);
         c.fill = GridBagConstraints.NONE;
         c.weightx = 0.0;
-
+        configureCheckoutPanel();
+        c.gridwidth = 1;
         setNonAlcoholicTabActive();
+
+
+    }
+    public void configureCheckoutPanel(){
+        JPanel panel = new JPanel();
+        panel.setLayout(new BorderLayout());
+        panel.setBackground(Color.WHITE);
+        panel.setBorder(BorderFactory.createMatteBorder(0, 0, 0,0, Color.BLACK));
+        c.insets = new Insets(10, 0, 10, 0);
+        c.gridwidth = 3;
+        c.fill = GridBagConstraints.HORIZONTAL;
+        checkoutPanel.add(panel, c);
+
+        JLabel cart = new JLabel("Cart", SwingConstants.CENTER);
+        cart.setFont(new Font("Arial", Font.BOLD, 32));
+        panel.add(cart, BorderLayout.CENTER);
+
+        JPanel itemBox = new JPanel();
+        itemBox.setBackground(Color.WHITE);
+        itemBox.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, 2));
+        itemBox.setLayout(new BorderLayout());
+        itemBox.setPreferredSize(new Dimension(295, 400));
+
+        scrollableContent = new JPanel();
+        scrollableContent.setLayout(new BoxLayout(scrollableContent, BoxLayout.Y_AXIS));
+        scrollableContent.setBackground(Color.WHITE);
+
+        // Add content
+
+        JScrollPane sp = new JScrollPane(scrollableContent);
+        sp.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        sp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        itemBox.add(sp, BorderLayout.CENTER);
+
+        c.anchor = GridBagConstraints.NORTH;
+        c.weighty = 1;
+        c.gridx = 0;
+        c.gridy = 1;
+        checkoutPanel.add(itemBox, c);
+
+
+        JButton checkoutButton = new RoundedButton("Checkout", Color.GREEN, Color.GREEN);
+        checkoutButton.setFont(new Font("Arial", Font.BOLD, 26));
+        c.gridx = 0;
+        c.gridy = 2;
+        checkoutPanel.add(checkoutButton, c);
+
+    }
+
+    public void updateCheckoutItems(List<Drink> drinkList){
+        this.checkoutList = drinkList;
+        scrollableContent.removeAll();
+        int x = 0;
+        int y = 0;
+        for (Drink drink : drinkList){
+
+            int wordLength = drink.getName().length();
+            int dashLength = 28 - wordLength;
+
+            String labelText = drink.getName() + "-".repeat(Math.max(0, dashLength)) +
+                    "x" + drink.getQuantity();
+
+            JLabel drinkLbl = new JLabel(labelText);
+            drinkLbl.setFont(new Font("Courier New", Font.BOLD, 15));
+
+            scrollableContent.add(drinkLbl);
+        }
+        scrollableContent.revalidate();
+        scrollableContent.repaint();
 
     }
 
@@ -79,12 +157,13 @@ public class MainMenu extends JFrame {
         contentPane.removeAll();
         int x = 0;
         int y = 2;
+        c.insets = new Insets(7, 7, 7, 7);
         for (JPanel dp : panels) {
             c.gridx = x;
             c.gridy = y;
             contentPane.add(dp, c);
             x++;
-            if (x==4){
+            if (x==3){
                 y++;
                 x=0;
             }
@@ -167,5 +246,8 @@ public class MainMenu extends JFrame {
 
     public JLabel getTabPanelLabel() {
         return tabPanelLabel;
+    }
+    public List<Drink> getCheckoutList(){
+        return checkoutList;
     }
 }

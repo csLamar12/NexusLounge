@@ -63,7 +63,8 @@ public class DrinkSQLProvider extends SQLProvider implements IDrinkSvc {
                         rs.getInt("id"),
                         rs.getString("name"),
                         rs.getBoolean("isAlcoholic"),
-                        rs.getString("Description")
+                        rs.getString("Description"),
+                        0
                 );
                 LOGGER.info("Drink retrieved: {}", drink.getName());
                 return drink;
@@ -92,7 +93,8 @@ public class DrinkSQLProvider extends SQLProvider implements IDrinkSvc {
                         rs.getInt("id"),
                         rs.getString("name"),
                         rs.getBoolean("isAlcoholic"),
-                        rs.getString("Description")
+                        rs.getString("Description"),
+                        0
                 );
                 LOGGER.info("Drink retrieved: {}", drink.getName());
                 drinks.add(drink);
@@ -120,7 +122,8 @@ public class DrinkSQLProvider extends SQLProvider implements IDrinkSvc {
                         rs.getInt("id"),
                         rs.getString("name"),
                         rs.getBoolean("isAlcoholic"),
-                        rs.getString("Description")
+                        rs.getString("Description"),
+                        0
                 );
                 drinks.add(drink);
             }

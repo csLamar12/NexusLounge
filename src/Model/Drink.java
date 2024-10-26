@@ -5,10 +5,11 @@ package Model;
  * Represents a drink with an ID, name, and alcoholic status.
  */
 public class Drink {
-    private int drinkId;
+    private int drinkId, quantity;
     private String name;
     private boolean isAlcoholic;
     private String description;
+
 
     /**
      * Constructs a Drink object with the specified drinkId, name, and alcoholic status.
@@ -17,10 +18,11 @@ public class Drink {
      * @param name the name of the drink
      * @param isAlcoholic whether the drink is alcoholic
      */
-    public Drink(int drinkId, String name, boolean isAlcoholic, String description) {
+    public Drink(int drinkId, String name, boolean isAlcoholic, String description, int quantity) {
         this.drinkId = drinkId;
         this.name = name;
         this.isAlcoholic = isAlcoholic;
+        this.quantity = quantity;
         this.description = description;
     }
 
@@ -40,6 +42,14 @@ public class Drink {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     // Getter and Setter for isAlcoholic

@@ -1,6 +1,7 @@
 package Controller;
 
 import View.DrinkPanel;
+import View.MainMenu;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -19,18 +20,22 @@ public class DrinkPanelController {
     private static final Logger LOGGER = LogManager.getLogger(DrinkPanelController.class);
     private DrinkPanel drinkPanel;
     private int qFTxt;
+    private MainMenuController controller;
+
 
     /**
      * Primary constructor for the DrinkPanelController class
      * @param drinkPanel
      */
-    public DrinkPanelController(DrinkPanel drinkPanel) {
+    public DrinkPanelController(DrinkPanel drinkPanel, MainMenuController controller) {
+        this.controller = controller;
         this.drinkPanel = drinkPanel;
         quantityKeyListener();
         bindDrinkPanelButtonEvents();
     }
 
-    public void bindDrinkPanelButtonEvents(){
+
+    public void bindDrinkPanelButtonEvents() {
         drinkPanel.getMinusButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -41,6 +46,7 @@ public class DrinkPanelController {
                     }
                     qFTxt = qFTxt - 1;
                     drinkPanel.getQuantityField().setText(String.valueOf(qFTxt));
+                    controller.minusFromCheckoutItems(drinkPanel.getDrink(), qFTxt);
                 } catch (InputMismatchException | NumberFormatException ex){
                     qFTxt = 0;
                 } catch (Exception ex){
@@ -68,6 +74,8 @@ public class DrinkPanelController {
                     qFTxt = Integer.parseInt(text);
                     qFTxt = qFTxt + 1;
                     drinkPanel.getQuantityField().setText(String.valueOf(qFTxt));
+
+                    controller.addToCheckoutItems(drinkPanel.getDrink(), qFTxt);
                 } catch (InputMismatchException | NumberFormatException ex){
                     qFTxt = 1;
                     drinkPanel.getQuantityField().setText(String.valueOf(qFTxt));
@@ -138,6 +146,19 @@ public class DrinkPanelController {
                 } else {
                     drinkPanel.changeButtonStatusToActive(drinkPanel.getMinusButton());
                 }
+            }
+        });
+        drinkPanel.getQuantityField().addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                qFTxt = Integer.parseInt(drinkPanel.getQuantityField().getText());
+                drinkPanel.getQuantityField().setText(String.valueOf(qFTxt));
+                controller.updateCheckoutList(drinkPanel.getDrink(), qFTxt);
             }
         });
     }
