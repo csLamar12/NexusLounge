@@ -3,7 +3,7 @@ package Model;
 /*
 Add methods and attributes as needed, JUST COMMUNICATE BEFORE DOING SO!!!
  */
-public class Manager extends Users{
+public class Manager extends Users {
 
     public Manager() {
         super();

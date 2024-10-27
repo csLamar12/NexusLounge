@@ -1,10 +1,20 @@
 package Model;
-
-
 /*
 Add methods and attributes as needed, JUST COMMUNICATE BEFORE DOING SO!!!
  */
+
+/**
+ * Represents a user with an id, name, role, username and password
+ *
+ * Note: The `username` and `password` are optional for some users,
+ * such as guests who may not create login credentials.
+*/
 public class Users {
+    /**
+     * The attributes are marked as `protected` to allow subclasses to access
+     * and modify the value directly without needing the getter/setter methods.
+     * It should not be accessed from outside the package or from unrelated classes.
+     */
     protected int id;
     protected String name;
     protected String username;
@@ -25,9 +35,9 @@ public class Users {
    *
    * @param id  Unique ID number for a user
    * @param name  Name of the user (Nullable)
-   * @param username  User's username (Nullable)
-   * @param password  User's Password (Nullable)
-   * @param role  User's role (Guest, Manager, Bartender)
+   * @param username  Users's username (Nullable)
+   * @param password  Users's Password (Nullable)
+   * @param role  Users's role (Guest, Manager, Bartender)
    */
     public Users(int id, String name, String username, String password, String role) {
         this.id = id;
@@ -41,9 +51,9 @@ public class Users {
    * Primary Controller for the Users Class (Without ID field)
    *
    * @param name  Name of the user (Nullable)
-   * @param username  User's username (Nullable)
-   * @param password  User's Password (Nullable)
-   * @param role  User's role (Guest, Manager, Bartender)
+   * @param username  Users's username (Nullable)
+   * @param password  Users's Password (Nullable)
+   * @param role  Users's role (Guest, Manager, Bartender)
    */
     public Users(String name, String username, String password, String role) {
       this.name = name;
@@ -105,5 +115,10 @@ public class Users {
 
     public void setRole(String role){
         this.role = role;
+    }
+
+    @Override
+    public String toString() {
+        return "Users [id= " + id + ", name=" + name + ", username=" + username + ", password= " + password + ", role" + role + "]";
     }
 }

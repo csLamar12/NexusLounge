@@ -4,7 +4,7 @@ package Model;
 /*
 Add methods and attributes as needed, JUST COMMUNICATE BEFORE DOING SO!!!
  */
-public class Bartender extends Users{
+public class Bartender extends Users {
 
     public Bartender() {
         super();

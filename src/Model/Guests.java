@@ -6,7 +6,7 @@ import java.util.Date;
 Add methods and attributes as needed, JUST COMMUNICATE BEFORE DOING SO!!!
  */
 
-public class Guests extends Users{
+public class Guests extends Users {
     private Date dOB;
 
     public Guests() {

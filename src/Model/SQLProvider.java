@@ -5,6 +5,12 @@ import java.sql.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/**
+ * The SQLProvider abstract class provides basic SQL connection functionality.
+ * This class establishes a connection to NexusLounge's database and
+ * provides access to various SQL components such as Statement,
+ * PreparedStatement, and ResultSet.
+ */
 public abstract class SQLProvider {
     protected Statement stat = null;
     protected Connection conn = null;
