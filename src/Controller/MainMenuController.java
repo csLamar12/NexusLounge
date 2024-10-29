@@ -7,6 +7,8 @@ import View.MainMenu;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -19,6 +21,7 @@ import java.util.List;
  */
 public class MainMenuController {
     private int age = 21;
+    private MainController mc;
     private MainMenu mainMenu;
     private List<JPanel> drinkPanels;
     private DrinkSQLProvider drinkSQLProvider = new DrinkSQLProvider();
@@ -116,6 +119,15 @@ public class MainMenuController {
             @Override
             public void mouseExited(MouseEvent e) {
                 mainMenu.getNonAlcoholicTab().setCursor(Cursor.getDefaultCursor());
+            }
+        });
+        mainMenu.getCheckoutButton().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Receive order logic then display message
+                mainMenu.displayMessage("Order Received");
+                mainMenu.dispose();
+
             }
         });
     }

@@ -13,6 +13,7 @@ import java.util.List;
  */
 public class MainMenu extends JFrame {
     private JPanel contentPane = new JPanel();
+    private JButton checkoutButton;
     private JScrollPane scrollPane = new JScrollPane(contentPane);
     private List<JPanel> alcoholicDP = new ArrayList<>();
     private List<JPanel> nonAlcoholicDP = new ArrayList<>();
@@ -122,7 +123,7 @@ public class MainMenu extends JFrame {
         checkoutPanel.add(itemBox, c);
 
 
-        JButton checkoutButton = new RoundedButton("Checkout", Color.GREEN, Color.GREEN);
+        checkoutButton = new RoundedButton("Checkout", Color.GREEN, Color.GREEN);
         checkoutButton.setFont(new Font("Arial", Font.BOLD, 26));
         c.gridx = 0;
         c.gridy = 2;
@@ -249,5 +250,16 @@ public class MainMenu extends JFrame {
     }
     public List<Drink> getCheckoutList(){
         return checkoutList;
+    }
+
+    public JButton getCheckoutButton() {
+        return checkoutButton;
+    }
+
+    public void setCheckoutButton(JButton checkoutButton) {
+        this.checkoutButton = checkoutButton;
+    }
+    public void displayMessage(String message){
+        JOptionPane.showMessageDialog(this, message);
     }
 }

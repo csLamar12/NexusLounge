@@ -5217,3 +5217,126 @@
 2024-10-26 09:27:11.299 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Root Beer Float
 2024-10-26 09:27:11.299 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Pineapple Coconut Smoothie
 2024-10-26 09:27:11.299 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Cucumber Lemonade
+2024-10-26 16:36:51.815 [main] WARN  Model.SQLProvider - Attempting to connect to database.
+2024-10-26 16:36:52.151 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Whiskey Sour
+2024-10-26 16:36:52.152 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Mojito
+2024-10-26 16:36:52.152 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Margarita
+2024-10-26 16:36:52.152 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Old Fashioned
+2024-10-26 16:36:52.152 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Rum Punch
+2024-10-26 16:36:52.152 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Piña Colada
+2024-10-26 16:36:52.152 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Tequila Sunrise
+2024-10-26 16:36:52.152 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Long Island Iced Tea
+2024-10-26 16:36:52.152 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Gin and Tonic
+2024-10-26 16:36:52.152 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Bloody Mary
+2024-10-26 16:36:52.152 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Mai Tai
+2024-10-26 16:36:52.152 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Cosmopolitan
+2024-10-26 16:36:52.152 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Daiquiri
+2024-10-26 16:36:52.152 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Sangria
+2024-10-26 16:36:52.152 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Bellini
+2024-10-26 16:36:52.152 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Moscow Mule
+2024-10-26 16:36:52.152 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Aperol Spritz
+2024-10-26 16:36:52.153 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Caipirinha
+2024-10-26 16:36:52.153 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Sidecar
+2024-10-26 16:36:52.153 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: French 75
+2024-10-26 16:36:52.616 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Virgin Mojito
+2024-10-26 16:36:52.616 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Lemonade
+2024-10-26 16:36:52.617 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Iced Tea
+2024-10-26 16:36:52.617 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Coca-Cola
+2024-10-26 16:36:52.617 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Orange Juice
+2024-10-26 16:36:52.617 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Apple Juice
+2024-10-26 16:36:52.617 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Sparkling Water
+2024-10-26 16:36:52.617 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Ginger Beer
+2024-10-26 16:36:52.617 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Shirley Temple
+2024-10-26 16:36:52.617 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Smoothie
+2024-10-26 16:36:52.617 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Fruit Punch
+2024-10-26 16:36:52.617 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Hot Chocolate
+2024-10-26 16:36:52.617 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Chai Latte
+2024-10-26 16:36:52.617 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Peach Iced Tea
+2024-10-26 16:36:52.617 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Lemon Basil Soda
+2024-10-26 16:36:52.617 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Matcha Latte
+2024-10-26 16:36:52.617 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Mint Lemonade
+2024-10-26 16:36:52.617 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Root Beer Float
+2024-10-26 16:36:52.618 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Pineapple Coconut Smoothie
+2024-10-26 16:36:52.618 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Cucumber Lemonade
+2024-10-26 16:40:28.673 [main] WARN  Model.SQLProvider - Attempting to connect to database.
+2024-10-26 16:40:28.958 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Whiskey Sour
+2024-10-26 16:40:28.958 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Mojito
+2024-10-26 16:40:28.958 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Margarita
+2024-10-26 16:40:28.958 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Old Fashioned
+2024-10-26 16:40:28.958 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Rum Punch
+2024-10-26 16:40:28.958 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Piña Colada
+2024-10-26 16:40:28.958 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Tequila Sunrise
+2024-10-26 16:40:28.958 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Long Island Iced Tea
+2024-10-26 16:40:28.958 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Gin and Tonic
+2024-10-26 16:40:28.958 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Bloody Mary
+2024-10-26 16:40:28.958 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Mai Tai
+2024-10-26 16:40:28.958 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Cosmopolitan
+2024-10-26 16:40:28.958 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Daiquiri
+2024-10-26 16:40:28.958 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Sangria
+2024-10-26 16:40:28.958 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Bellini
+2024-10-26 16:40:28.959 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Moscow Mule
+2024-10-26 16:40:28.959 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Aperol Spritz
+2024-10-26 16:40:28.959 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Caipirinha
+2024-10-26 16:40:28.959 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Sidecar
+2024-10-26 16:40:28.959 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: French 75
+2024-10-26 16:40:29.010 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Virgin Mojito
+2024-10-26 16:40:29.010 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Lemonade
+2024-10-26 16:40:29.010 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Iced Tea
+2024-10-26 16:40:29.010 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Coca-Cola
+2024-10-26 16:40:29.010 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Orange Juice
+2024-10-26 16:40:29.010 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Apple Juice
+2024-10-26 16:40:29.010 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Sparkling Water
+2024-10-26 16:40:29.010 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Ginger Beer
+2024-10-26 16:40:29.010 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Shirley Temple
+2024-10-26 16:40:29.010 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Smoothie
+2024-10-26 16:40:29.010 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Fruit Punch
+2024-10-26 16:40:29.010 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Hot Chocolate
+2024-10-26 16:40:29.010 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Chai Latte
+2024-10-26 16:40:29.010 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Peach Iced Tea
+2024-10-26 16:40:29.010 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Lemon Basil Soda
+2024-10-26 16:40:29.010 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Matcha Latte
+2024-10-26 16:40:29.010 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Mint Lemonade
+2024-10-26 16:40:29.011 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Root Beer Float
+2024-10-26 16:40:29.011 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Pineapple Coconut Smoothie
+2024-10-26 16:40:29.011 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Cucumber Lemonade
+2024-10-29 13:14:26.927 [main] WARN  Model.SQLProvider - Attempting to connect to database.
+2024-10-29 13:14:27.228 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Whiskey Sour
+2024-10-29 13:14:27.228 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Mojito
+2024-10-29 13:14:27.228 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Margarita
+2024-10-29 13:14:27.228 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Old Fashioned
+2024-10-29 13:14:27.228 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Rum Punch
+2024-10-29 13:14:27.228 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Piña Colada
+2024-10-29 13:14:27.228 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Tequila Sunrise
+2024-10-29 13:14:27.228 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Long Island Iced Tea
+2024-10-29 13:14:27.228 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Gin and Tonic
+2024-10-29 13:14:27.228 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Bloody Mary
+2024-10-29 13:14:27.229 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Mai Tai
+2024-10-29 13:14:27.229 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Cosmopolitan
+2024-10-29 13:14:27.229 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Daiquiri
+2024-10-29 13:14:27.229 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Sangria
+2024-10-29 13:14:27.229 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Bellini
+2024-10-29 13:14:27.229 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Moscow Mule
+2024-10-29 13:14:27.229 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Aperol Spritz
+2024-10-29 13:14:27.229 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Caipirinha
+2024-10-29 13:14:27.229 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Sidecar
+2024-10-29 13:14:27.229 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: French 75
+2024-10-29 13:14:27.278 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Virgin Mojito
+2024-10-29 13:14:27.279 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Lemonade
+2024-10-29 13:14:27.279 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Iced Tea
+2024-10-29 13:14:27.279 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Coca-Cola
+2024-10-29 13:14:27.279 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Orange Juice
+2024-10-29 13:14:27.279 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Apple Juice
+2024-10-29 13:14:27.279 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Sparkling Water
+2024-10-29 13:14:27.279 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Ginger Beer
+2024-10-29 13:14:27.279 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Shirley Temple
+2024-10-29 13:14:27.279 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Smoothie
+2024-10-29 13:14:27.279 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Fruit Punch
+2024-10-29 13:14:27.279 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Hot Chocolate
+2024-10-29 13:14:27.279 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Chai Latte
+2024-10-29 13:14:27.279 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Peach Iced Tea
+2024-10-29 13:14:27.279 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Lemon Basil Soda
+2024-10-29 13:14:27.279 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Matcha Latte
+2024-10-29 13:14:27.279 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Mint Lemonade
+2024-10-29 13:14:27.279 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Root Beer Float
+2024-10-29 13:14:27.279 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Pineapple Coconut Smoothie
+2024-10-29 13:14:27.279 [main] INFO  Model.DrinkSQLProvider - Drink retrieved: Cucumber Lemonade
