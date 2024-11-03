@@ -1,9 +1,11 @@
 package Controller;
 
-import Model.DataModel;
-import View.DrinkPanel;
+import Model.Client;
+import Model.Users;
 import View.LoginScreen;
 import View.MainView;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Main controller class for the application
@@ -11,19 +13,18 @@ import View.MainView;
  * @author Lamar Haye
  */
 public class MainController {
-
-    private DataModel model;
+    private static final Logger LOGGER = LogManager.getLogger(MainController.class);
     private MainView view;
     private MainMenuController mainMenuController;
+    private Client client;
+
 
     /**
      * Primary Constructor for the MainController class
      *
-     * @param model The data model
      * @param view  The main view
      */
-    public MainController(DataModel model, MainView view) {
-        this.model = model;
+    public MainController( MainView view) {
         this.view = view;
     }
 
@@ -31,33 +32,59 @@ public class MainController {
      * Initialize the application by showing the splash screen and login screen.
      */
     public void initApp(){
-        view.showSplashScreen();
-//        view.showLoginScreen();
-//        bindLoginScreenButtonEvents();
-        view.showMainMenuScreen();
-        MainMenuController mMC = new MainMenuController(view.getMainMenuScreen());
+//        view.showSplashScreen();
+        view.showLoginScreen();
+        bindLoginScreenButtonEvents();
+        client = new Client();
     }
 
     /**
      * Authenticate user based on their username and password
      */
     public void authenticateUser() {
-        String username = view.getLoginScreen().getUsername();
-        String password = view.getLoginScreen().getPassword();
-        if (model.authenticateUser(username, password)){
-            view.getLoginScreen().displayMessage("Login Successful");
-            view.getLoginScreen().dispose();
-            view.showMainMenuScreen();
-        } else
+        Users user = new Users();
+        user.setUsername(view.getLoginScreen().getUsername());
+        user.setPassword(view.getLoginScreen().getPassword());
+        user = client.authenticate(user);
+        try {
+            if (user != null) {
+                if (user.getRole().equals("Guest")) {
+                    view.getLoginScreen().displayMessage("Login Successful");
+                    view.getLoginScreen().dispose();
+                    view.showMainMenuScreen();
+                    MainMenuController mMC = new MainMenuController(view.getMainMenuScreen(), client);
+                } else if (user.getRole().equals("Bartender")) {
+                    view.getLoginScreen().displayMessage("Login Successful");
+                    view.getLoginScreen().dispose();
+                    // Display Bartender Screen
+                    System.out.println("Display Bartender Screen");
+                } else if (user.getRole().equals("Manager")) {
+                    view.getLoginScreen().displayMessage("Login Successful");
+                    view.getLoginScreen().dispose();
+                    // Display Manager Screen
+                    System.out.println("Display Manager Screen");
+                } else
+                    view.getLoginScreen().displayMessage("Login Unsuccessful");
+            } else
+                view.getLoginScreen().displayMessage("Login Failed");
+        } catch (NullPointerException e) {
+            LOGGER.error("Login Failed due to NullPointerException");
             view.getLoginScreen().displayMessage("Login Failed");
+        } catch (Exception e) {
+            LOGGER.error("Login Failed: {}", e.getMessage());
+            view.getLoginScreen().displayMessage("Login Failed");
+        }
     }
 
     /**
      * Handles guest login
      */
     public void guestLogin(){
+        view.getGuestInfo();
+        client.guestUser(view.getDateOfBirth());
         view.getLoginScreen().dispose();
         view.showMainMenuScreen();
+        MainMenuController mMC = new MainMenuController(view.getMainMenuScreen(), client);
     }
 
     /**
@@ -65,8 +92,8 @@ public class MainController {
      */
     public void bindLoginScreenButtonEvents(){
         LoginScreen loginScreen = view.getLoginScreen();
-        loginScreen.setLoginButtonLister(e -> authenticateUser());
-        loginScreen.setGuestButtonLister(e -> guestLogin());
+        loginScreen.setLoginButtonListener(e -> authenticateUser());
+        loginScreen.setGuestButtonListener(e -> guestLogin());
     }
 
 }

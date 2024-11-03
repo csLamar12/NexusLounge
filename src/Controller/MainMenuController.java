@@ -1,7 +1,7 @@
 package Controller;
 
+import Model.Client;
 import Model.Drink;
-import Model.DrinkSQLProvider;
 import View.DrinkPanel;
 import View.MainMenu;
 
@@ -24,12 +24,13 @@ public class MainMenuController {
     private MainController mc;
     private MainMenu mainMenu;
     private List<JPanel> drinkPanels;
-    private DrinkSQLProvider drinkSQLProvider = new DrinkSQLProvider();
     private DrinkPanelController dPController;
     private List<Drink> drinks = new ArrayList<>();
+    private Client client;
 
-    public MainMenuController(MainMenu mainMenu) {
+    public MainMenuController(MainMenu mainMenu, Client client) {
         this.mainMenu = mainMenu;
+        this.client = client;
         mainMenu.setAlcoholicPanels(getAlcoholicDrinks());
         mainMenu.setNonAlcoholicPanels(getNonAlcoholicDrinks());
         mainMenu.initWindow();
@@ -133,9 +134,9 @@ public class MainMenuController {
     }
 
     public List<Drink> getAlcoholicDrinks() {
-        return drinkSQLProvider.getDrinkByType(true);
+        return client.getAlcoholicDrinks();
     }
     public List<Drink> getNonAlcoholicDrinks() {
-        return drinkSQLProvider.getDrinkByType(false);
+        return client.getNonAlcoholicDrinks();
     }
 }

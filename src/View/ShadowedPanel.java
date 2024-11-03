@@ -2,6 +2,11 @@ package View;
 import javax.swing.*;
 import java.awt.*;
 
+
+/**
+ *
+ * @author Lamar Haye
+ */
 public final class ShadowedPanel extends JPanel {
     private static final int SHADOW_SIZE = 20;
     private static final Color SHADOW_COLOR = new Color(0,0,0,80);

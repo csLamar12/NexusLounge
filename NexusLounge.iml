@@ -10,7 +10,7 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://C:/log4j-api-2.24.0.jar!/" />
+          <root url="jar://$MODULE_DIR$/src/JarFiles/log4j-api-2.24.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -19,7 +19,16 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://C:/log4j-core-2.24.0.jar!/" />
+          <root url="jar://$MODULE_DIR$/src/JarFiles/log4j-core-2.24.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/src/JarFiles/mysql-connector-j-9.0.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

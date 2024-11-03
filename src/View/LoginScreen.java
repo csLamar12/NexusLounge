@@ -1,14 +1,13 @@
 package View;
 
-import Controller.MainController;
-
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
 
+/**
+ *
+ * @author Lamar Haye
+ */
 public class LoginScreen extends JFrame {
     private static final String nLTBPath = "src/Resources/nXLogo.png";
     private ShadowedPanel popUpPanel = new ShadowedPanel();
@@ -76,10 +75,10 @@ public class LoginScreen extends JFrame {
         return loginButton;
     }
 
-    public void setLoginButtonLister(ActionListener listener){
+    public void setLoginButtonListener(ActionListener listener){
         loginButton.addActionListener(listener);
     }
-    public void setGuestButtonLister(ActionListener listener){
+    public void setGuestButtonListener(ActionListener listener){
         guestButton.addActionListener(listener);
     }
 

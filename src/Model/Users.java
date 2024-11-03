@@ -3,13 +3,15 @@ package Model;
 Add methods and attributes as needed, JUST COMMUNICATE BEFORE DOING SO!!!
  */
 
+import java.io.Serializable;
+
 /**
  * Represents a user with an id, name, role, username and password
  *
  * Note: The `username` and `password` are optional for some users,
  * such as guests who may not create login credentials.
 */
-public class Users {
+public class Users implements Serializable {
     /**
      * The attributes are marked as `protected` to allow subclasses to access
      * and modify the value directly without needing the getter/setter methods.
@@ -119,6 +121,6 @@ public class Users {
 
     @Override
     public String toString() {
-        return "Users [id= " + id + ", name=" + name + ", username=" + username + ", password= " + password + ", role" + role + "]";
+        return "Users [id= " + id + ", name=" + name + ", username=" + username + ", password= " + password + ", role= " + role + "]";
     }
 }

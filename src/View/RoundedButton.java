@@ -3,6 +3,11 @@ package View;
 import javax.swing.*;
 import java.awt.*;
 
+
+/**
+ *
+ * @author Lamar Haye
+ */
 public final class RoundedButton extends JButton {
     private Color color1, color2;
 

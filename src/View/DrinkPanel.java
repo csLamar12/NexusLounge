@@ -1,17 +1,16 @@
-//Author: Danielle Johns
 package View;
 
 import Model.Drink; // Import Drink class from the model package
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * The DrinkPanel class is a custom JPanel component designed to display information about a Drink object.
  * It uses a 3x3 grid layout to position drink-related elements such as the drink name, image,
  * and controls for adjusting the quantity.
+ *
+ * @author Danielle Johns
  */
 public class DrinkPanel extends JPanel {
 

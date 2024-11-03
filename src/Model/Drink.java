@@ -1,10 +1,12 @@
 //Author: Danielle Johns
 package Model;
 
+import java.io.Serializable;
+
 /**
  * Represents a drink with an ID, name, and alcoholic status.
  */
-public class Drink {
+public class Drink implements Serializable {
     private int drinkId, quantity;
     private String name;
     private boolean isAlcoholic;

@@ -1,12 +1,14 @@
 package Model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /*
 Add methods and attributes as needed, JUST COMMUNICATE BEFORE DOING SO!!!
  */
 
-public class Guests extends Users {
+public class Guests extends Users implements Serializable {
+    private static final long serialVersionUID = 1L;
     private Date dOB;
 
     public Guests() {
@@ -44,8 +46,11 @@ public class Guests extends Users {
     public Date getdOB() {
         return dOB;
     }
-
     public void setdOB(Date dOB) {
         this.dOB = dOB;
+    }
+
+    public int getAge(){
+        return (int) (new Date().getTime()-dOB.getTime());
     }
 }
