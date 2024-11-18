@@ -6,8 +6,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
 import javax.swing.border.EmptyBorder;
 import java.util.List;
+import java.util.ArrayList;
 
 public class ManagerScreen extends JFrame {
     private final JPanel orderListContentPanel;
@@ -47,10 +49,16 @@ public class ManagerScreen extends JFrame {
         // Reports menu with items
         JMenu reportsMenu = new JMenu("Reports");
         JMenuItem generateReport = new JMenuItem("Generate Report");
-        JMenuItem exportReport = new JMenuItem("Export Report");
+        JMenu exportReport = new JMenu("Export Report");
         reportsMenu.add(generateReport);
         reportsMenu.add(exportReport);
 
+        JMenuItem pdfReport = new JMenuItem("PDF Report");
+        JMenuItem htmlReport = new JMenuItem("HTML Report");
+        
+        exportReport.add(pdfReport);
+        exportReport.add(htmlReport);
+        
         // Add menus to the menu bar
         menuBar.add(drinksMenu);
         menuBar.add(usersMenu);
@@ -474,7 +482,7 @@ public class ManagerScreen extends JFrame {
 
         JLabel orderLabel = new JLabel("Order#" + String.format("%03d", order.getOrderId()));
         orderLabel.setFont(new Font("Arial", Font.BOLD, 20));
-        JLabel guestLabel = new JLabel("    Guest " + order.getGuestId() + "          " + order.getKioskNumber());
+        JLabel guestLabel = new JLabel("    Guest " + order.getGuestId());
         guestLabel.setFont(new Font("Arial", Font.PLAIN, 14));
 
         infoPanel.add(orderLabel);
@@ -558,15 +566,33 @@ public class ManagerScreen extends JFrame {
     }   
     
     private void showOrderDetails(Order order) {
-        String items = String.join("\n", order.getItems());
+        
+        OrderDetailSQLProvider details = new OrderDetailSQLProvider();
+        DrinkSQLProvider drinksList = new DrinkSQLProvider();
+        
+        List<OrderDetail> orderDetails = details.getOrderDetailsByOrderId(order.getOrderId());
+        List<Drink> drinksData = drinksList.getAllDrinks();
+                
+        List<String> drinks = new ArrayList<>();
+        
+        for (OrderDetail orderDetail : orderDetails){
+            if (orderDetail.getOrderId() == order.getOrderId()){
+                for (Drink drink : drinksData){
+                    if (drink.getId() == orderDetail.getDrinkId()){
+                        drinks.add(drink.getName() + " ×"+ orderDetail.getQuantity());
+                    }
+                }
+            }
+        }
+                
+        String items = String.join("\n", drinks);        
         String message = """
             Order Details:
             Order ID: %s
             Guest ID: %s
-            Kiosk#: %s
             Items: 
             %s
-            """.formatted(order.getOrderId(), order.getGuestId(), order.getKioskNumber(), items);
+            """.formatted(order.getOrderId(), order.getGuestId(), items);
 
         JOptionPane.showMessageDialog(this, message, "Order Details", JOptionPane.INFORMATION_MESSAGE);
     }
@@ -592,17 +618,11 @@ public class ManagerScreen extends JFrame {
     public static void main(String[] args) {
         ManagerScreen managerScreen = new ManagerScreen();
 
-        // Define items for each sample order
-        List<String> items1 = List.of("Coke", "Burger", "Fries");
-        List<String> items2 = List.of("Pepsi", "Pizza", "Salad");
-        List<String> items3 = List.of("Sprite", "Hotdog", "Chips");
-        List<String> items4 = List.of("Water", "Sandwich", "Cookie");
-
         // Create orders with items
-        managerScreen.addOrder(new Order(1, "G001", "Kiosk 1", items1));
-        managerScreen.addOrder(new Order(2, "G002", "Kiosk 2", items2));
-        managerScreen.addOrder(new Order(3, "G003", "Kiosk 1", items3));
-        managerScreen.addOrder(new Order(4, "G004", "Kiosk 2", items4));
+        managerScreen.addOrder(new Order(1, 1, 1,new Date(),true));
+        managerScreen.addOrder(new Order(2, 2, 2,new Date(),true));
+        managerScreen.addOrder(new Order(3, 3, 3,new Date(),true));
+        managerScreen.addOrder(new Order(4, 4, 4,new Date(),true));
 
         // Example timer to remove orders after a delay
         Timer timer = new Timer(3000, e -> {
