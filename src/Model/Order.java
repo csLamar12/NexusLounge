@@ -70,6 +70,10 @@ public class Order {
         this.status = status;
     }
 
+    public String getOrderIdAsString() {
+        return String.format("%03d", orderId);
+    }
+
     /**
      * Returns a string representation of the Order object.
      */
