@@ -33,7 +33,7 @@ public class MainController {
      * Initialize the application by showing the splash screen and login screen.
      */
     public void initApp(){
-//        view.showSplashScreen();
+        view.showSplashScreen();
         view.showLoginScreen();
         bindLoginScreenButtonEvents();
         client = new Client();
