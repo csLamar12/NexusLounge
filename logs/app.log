@@ -978,3 +978,14 @@ java.io.StreamCorruptedException: invalid handle value: 7E000700
 2024-11-18 17:16:44.481 [main] INFO  Model.Client - Connected to server: localhost on port: 12350
 2024-11-18 17:17:20.248 [main] INFO  Model.Client - Connected to server: localhost on port: 12350
 2024-11-18 17:18:56.327 [main] INFO  Model.Client - Connected to server: localhost on port: 12350
+2024-11-18 17:25:29.264 [main] INFO  Model.Client - Connected to server: localhost on port: 12350
+2024-11-18 17:26:29.158 [main] INFO  Model.Client - Connected to server: localhost on port: 12350
+2024-11-18 17:31:15.540 [main] INFO  Model.Client - Connected to server: localhost on port: 12350
+2024-11-18 17:34:44.302 [main] INFO  Model.Client - Connected to server: localhost on port: 12350
+2024-11-18 17:38:51.756 [main] INFO  Model.Client - Connected to server: localhost on port: 12350
+2024-11-18 17:39:16.954 [main] INFO  Model.Client - Connected to server: localhost on port: 12350
+2024-11-18 17:40:21.500 [main] INFO  Model.Client - Connected to server: localhost on port: 12350
+2024-11-18 17:40:39.849 [main] INFO  Model.Client - Connected to server: localhost on port: 12350
+2024-11-18 17:41:30.001 [main] INFO  Model.Client - Connected to server: localhost on port: 12350
+2024-11-18 17:41:45.790 [main] INFO  Model.Client - Connected to server: localhost on port: 12350
+2024-11-18 17:42:27.608 [main] INFO  Model.Client - Connected to server: localhost on port: 12350

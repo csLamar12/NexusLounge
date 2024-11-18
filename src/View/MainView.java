@@ -14,7 +14,7 @@ public class MainView extends JFrame {
     private SplashScreen splashScreen;
     private LoginScreen loginScreen;
     private MainMenu mainMenu;
-//    private BartenderScreen bartenderScreen;
+    private BartenderScreen bartenderScreen;
     private ManagerScreen managerScreen;
     private Date dateOfBirth;
 
@@ -64,21 +64,21 @@ public class MainView extends JFrame {
         mainMenu = new MainMenu();
     }
 
-//    public void showBartenderScreen(Client client){
-//        bartenderScreen = new BartenderScreen(client);
-//    }
+    public void showBartenderScreen(Client client){
+        bartenderScreen = new BartenderScreen(client);
+    }
 
     public void showManagerScreen(Client client){
         managerScreen = new ManagerScreen(client);
     }
 
-//    public BartenderScreen getBartenderScreen() {
-//        return bartenderScreen;
-//    }
-//
-//    public void setBartenderScreen(BartenderScreen bartenderScreen) {
-//        this.bartenderScreen = bartenderScreen;
-//    }
+    public BartenderScreen getBartenderScreen() {
+        return bartenderScreen;
+    }
+
+    public void setBartenderScreen(BartenderScreen bartenderScreen) {
+        this.bartenderScreen = bartenderScreen;
+    }
 
     public ManagerScreen getManagerScreen() {
         return managerScreen;

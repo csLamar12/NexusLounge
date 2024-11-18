@@ -491,14 +491,14 @@ public class ManagerScreen extends JFrame {
             JOptionPane.showMessageDialog(this, "Export Report functionality not implemented yet.");
         });
 
-        initBartenderScreen();
+        initManagerScreen();
 //        client.setOrderUpdateListener(this);
 //        client.startListener();
 
         setVisible(true);
     }
 
-    public void initBartenderScreen() {
+    public void initManagerScreen() {
        try {
            getOrder();
        } catch (IOException | ClassNotFoundException ex) {

@@ -57,7 +57,7 @@ public class MainController {
                 } else if (user.getRole().equals("Bartender")) {
                     view.getLoginScreen().displayMessage("Login Successful");
                     view.getLoginScreen().dispose();
-//                    view.showBartenderScreen(client);
+                    view.showBartenderScreen(client);
                 } else if (user.getRole().equals("Manager")) {
                     view.getLoginScreen().displayMessage("Login Successful");
                     view.getLoginScreen().dispose();

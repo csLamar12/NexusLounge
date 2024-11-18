@@ -2,9 +2,7 @@ package View;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import java.awt.event.*;
 
 /**
  *
@@ -13,7 +11,8 @@ import java.awt.event.KeyEvent;
 public class LoginScreen extends JFrame {
     private static final String nLTBPath = "src/Resources/nXLogo.png";
     private ShadowedPanel popUpPanel = new ShadowedPanel();
-    private PlaceHolderTF usernameTB, passwordTB;
+    private JTextField usernameTB;
+    private JPasswordField passwordTB;
     private JButton loginButton, guestButton;
 
     public LoginScreen() {
@@ -48,9 +47,42 @@ public class LoginScreen extends JFrame {
 
 
         // Username and Password Textfields
-        usernameTB = new PlaceHolderTF("Username");
+        usernameTB = new JTextField("Username");
+        usernameTB.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                if(usernameTB.getText().equals("Username")) {
+                    usernameTB.setText("");
+                }
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if(usernameTB.getText().isEmpty()) {
+                    usernameTB.setText("Username");
+                }
+            }
+        });
         usernameTB.setBounds((loginPanel.getWidth() - 260) / 2, 10, 150, 25);
-        passwordTB = new PlaceHolderTF("Password");
+        passwordTB = new JPasswordField("Password");
+        passwordTB.setEchoChar((char) 0);
+        passwordTB.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                if(passwordTB.getText().equals("Password")) {
+                    passwordTB.setEchoChar('●');
+                    passwordTB.setText("");
+                }
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if(passwordTB.getText().isEmpty()) {
+                    passwordTB.setEchoChar((char) 0);
+                    passwordTB.setText("Password");
+                }
+            }
+        });
         passwordTB.setBounds((loginPanel.getWidth() - 260) / 2, 45, 150, 25);
 
         // Continue as Guest & Login Button
