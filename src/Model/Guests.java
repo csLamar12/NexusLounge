@@ -1,6 +1,7 @@
 package Model;
 
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Date;
 
 /*
@@ -10,6 +11,7 @@ Add methods and attributes as needed, JUST COMMUNICATE BEFORE DOING SO!!!
 public class Guests extends Users implements Serializable {
     private static final long serialVersionUID = 1L;
     private Date dOB;
+    private int age;
 
     public Guests() {
         super();
@@ -51,6 +53,26 @@ public class Guests extends Users implements Serializable {
     }
 
     public int getAge(){
-        return (int) (new Date().getTime()-dOB.getTime());
+        return age;
+    }
+    public void calculateAge() {
+        Calendar birthCalendar = Calendar.getInstance();
+        birthCalendar.setTime(dOB);
+
+        Calendar today = Calendar.getInstance();
+
+        int years = today.get(Calendar.YEAR) - birthCalendar.get(Calendar.YEAR);
+
+        // Adjust if the birth date has not occurred yet this year
+        if (today.get(Calendar.MONTH) < birthCalendar.get(Calendar.MONTH) ||
+                (today.get(Calendar.MONTH) == birthCalendar.get(Calendar.MONTH) &&
+                        today.get(Calendar.DAY_OF_MONTH) < birthCalendar.get(Calendar.DAY_OF_MONTH))) {
+            years--;
+        }
+
+        this.age = years;
+    }
+    public void setAge(int age){
+        this.age = age;
     }
 }

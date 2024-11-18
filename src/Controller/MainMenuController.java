@@ -1,9 +1,10 @@
 package Controller;
 
-import Model.Client;
-import Model.Drink;
+import Model.*;
 import View.DrinkPanel;
 import View.MainMenu;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,7 +12,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -20,17 +23,21 @@ import java.util.List;
  *
  */
 public class MainMenuController {
-    private int age = 21;
+
+    private static final Logger LOGGER = LogManager.getLogger(MainMenuController.class);
+
     private MainController mc;
     private MainMenu mainMenu;
     private List<JPanel> drinkPanels;
     private DrinkPanelController dPController;
     private List<Drink> drinks = new ArrayList<>();
     private Client client;
+    private Guests guest;
 
-    public MainMenuController(MainMenu mainMenu, Client client) {
+    public MainMenuController(MainMenu mainMenu, Client client, Guests guest) {
         this.mainMenu = mainMenu;
         this.client = client;
+        this.guest = guest;
         mainMenu.setAlcoholicPanels(getAlcoholicDrinks());
         mainMenu.setNonAlcoholicPanels(getNonAlcoholicDrinks());
         mainMenu.initWindow();
@@ -91,9 +98,11 @@ public class MainMenuController {
         mainMenu.getAlcoholicTab().addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                // Replace with user.getAge()
-                if (age >= 18)
+                guest.calculateAge();
+                if (guest.getAge() >= 18)
                     mainMenu.setAlcoholicTabActive();
+                else
+                    mainMenu.displayMessage("You're not old enough to access this menu!");
             }
 
             @Override
@@ -125,7 +134,18 @@ public class MainMenuController {
         mainMenu.getCheckoutButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Receive order logic then display message
+                try {
+                    // will set bartender ID when bartender clicks serve
+                    int orderID = client.sendOrder(new Order(guest.getId(), 2, new Date(), false));
+                    List<OrderDetail> orderDetails = new ArrayList<>();
+                    for (Drink d : mainMenu.getCheckoutList()) {
+                        orderDetails.add(new OrderDetail(orderID, d.getId(), d.getQuantity()));
+                    }
+                    client.sendOrderDetail(orderDetails);
+
+                } catch (IOException | ClassNotFoundException ex) {
+                    LOGGER.error(ex);
+                }
                 mainMenu.displayMessage("Order Received");
                 mainMenu.dispose();
 

@@ -7,4 +7,5 @@ public class Main2 {
         MainController controller = new MainController(view);
         controller.initApp();
     }
+
 }

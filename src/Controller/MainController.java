@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.Client;
+import Model.Guests;
 import Model.Users;
 import View.LoginScreen;
 import View.MainView;
@@ -52,17 +53,15 @@ public class MainController {
                     view.getLoginScreen().displayMessage("Login Successful");
                     view.getLoginScreen().dispose();
                     view.showMainMenuScreen();
-                    MainMenuController mMC = new MainMenuController(view.getMainMenuScreen(), client);
+                    MainMenuController mMC = new MainMenuController(view.getMainMenuScreen(), client, (Guests) user);
                 } else if (user.getRole().equals("Bartender")) {
                     view.getLoginScreen().displayMessage("Login Successful");
                     view.getLoginScreen().dispose();
-                    // Display Bartender Screen
-                    System.out.println("Display Bartender Screen");
+//                    view.showBartenderScreen(client);
                 } else if (user.getRole().equals("Manager")) {
                     view.getLoginScreen().displayMessage("Login Successful");
                     view.getLoginScreen().dispose();
-                    // Display Manager Screen
-                    System.out.println("Display Manager Screen");
+                    view.showManagerScreen(client);
                 } else
                     view.getLoginScreen().displayMessage("Login Unsuccessful");
             } else
@@ -81,10 +80,10 @@ public class MainController {
      */
     public void guestLogin(){
         view.getGuestInfo();
-        client.guestUser(view.getDateOfBirth());
+        Guests guest = client.guestUser(view.getDateOfBirth());
         view.getLoginScreen().dispose();
         view.showMainMenuScreen();
-        MainMenuController mMC = new MainMenuController(view.getMainMenuScreen(), client);
+        MainMenuController mMC = new MainMenuController(view.getMainMenuScreen(), client, guest);
     }
 
     /**

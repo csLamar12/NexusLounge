@@ -3,6 +3,8 @@ package View;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 /**
  *
@@ -57,6 +59,7 @@ public class LoginScreen extends JFrame {
 
         loginButton = new RoundedButton("Login", Color.RED, Color.RED);
         loginButton.setBounds((loginPanel.getWidth() + 60) / 2, 45, 105, 30);
+        enterKeyListener();
 
         // Add loginPanel components
         loginPanel.add(usernameTB);
@@ -73,6 +76,23 @@ public class LoginScreen extends JFrame {
     }
     public JButton getLoginButton() {
         return loginButton;
+    }
+
+    public void enterKeyListener(){
+        KeyAdapter enterKeyListener = new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+                    loginButton.doClick();
+                }
+            }
+        };
+        usernameTB.addKeyListener(enterKeyListener);
+        passwordTB.addKeyListener(enterKeyListener);
+        popUpPanel.addKeyListener(enterKeyListener);
+        loginButton.addKeyListener(enterKeyListener);
+        this.addKeyListener(enterKeyListener);
+
     }
 
     public void setLoginButtonListener(ActionListener listener){

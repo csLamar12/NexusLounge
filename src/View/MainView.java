@@ -1,5 +1,7 @@
 package View;
 
+import Model.Client;
+
 import javax.swing.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -12,6 +14,8 @@ public class MainView extends JFrame {
     private SplashScreen splashScreen;
     private LoginScreen loginScreen;
     private MainMenu mainMenu;
+//    private BartenderScreen bartenderScreen;
+    private ManagerScreen managerScreen;
     private Date dateOfBirth;
 
     public MainView() {
@@ -58,6 +62,30 @@ public class MainView extends JFrame {
 
     public void showMainMenuScreen(){
         mainMenu = new MainMenu();
+    }
+
+//    public void showBartenderScreen(Client client){
+//        bartenderScreen = new BartenderScreen(client);
+//    }
+
+    public void showManagerScreen(Client client){
+        managerScreen = new ManagerScreen(client);
+    }
+
+//    public BartenderScreen getBartenderScreen() {
+//        return bartenderScreen;
+//    }
+//
+//    public void setBartenderScreen(BartenderScreen bartenderScreen) {
+//        this.bartenderScreen = bartenderScreen;
+//    }
+
+    public ManagerScreen getManagerScreen() {
+        return managerScreen;
+    }
+
+    public void setManagerScreen(ManagerScreen managerScreen) {
+        this.managerScreen = managerScreen;
     }
 
     public MainMenu getMainMenuScreen() {

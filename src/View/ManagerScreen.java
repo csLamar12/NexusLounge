@@ -1,23 +1,36 @@
-package ap.project;
+package View;
 
+import Model.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.sql.Connection;
 import javax.swing.border.EmptyBorder;
 import java.util.List;
 import java.util.ArrayList;
 
 public class ManagerScreen extends JFrame {
+
+    private static final Logger LOGGER = LogManager.getLogger(ManagerScreen.class);
+
     private final JPanel orderListContentPanel;
     private final JPanel servedOrdersContentPanel;
     private final JLabel noOrdersLabel;
     private final JLabel noServedOrdersLabel;
+    private Client client;
+    private Object[] OD;
+    private JButton refreshButton;
 
-    public ManagerScreen() {
+    public ManagerScreen(Client client) {
+        this.client = client;
+
+
         // Set up the frame
         setTitle("Manager Screen");
         setSize(1000, 600);
@@ -131,6 +144,23 @@ public class ManagerScreen extends JFrame {
         gbc.weightx = 0.35; // 30% width for Served Orders
         gbc.insets = new Insets(0, 10, 20, 20);
         centerPanel.add(servedOrdersContainer, gbc);
+        // Create the Refresh button
+        refreshButton = new JButton("Refresh");
+        refreshButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    orderListContentPanel.removeAll();
+                    orderListContentPanel.add(refreshButton);
+                    for (Order order: client.getPendingOrders()){
+                        addOrder(order);
+                    }
+                } catch (IOException | ClassNotFoundException ex) {
+                    LOGGER.error(ex);
+                }
+            }
+        });
+        orderListContentPanel.add(refreshButton);
 
         // Adding components to frame
         add(centerPanel, BorderLayout.CENTER);
@@ -147,7 +177,7 @@ public class ManagerScreen extends JFrame {
         editDrink.addActionListener(e -> {
             JOptionPane.showMessageDialog(this, "Edit Drink functionality not implemented yet.");
         });
-        
+
         createUser.addActionListener(e -> {
             // Initialize variables to preserve user input
             String preservedUsername = "";
@@ -236,14 +266,14 @@ public class ManagerScreen extends JFrame {
                 }
 
                 // Validate inputs
-                if (preservedName.isEmpty() || preservedUsername.isEmpty() || preservedPassword.isEmpty() || 
+                if (preservedName.isEmpty() || preservedUsername.isEmpty() || preservedPassword.isEmpty() ||
                     ("Guest".equals(preservedRole) && preservedDOB == null)) {
                     JOptionPane.showMessageDialog(
                             null, "Please fill in all required fields.", "Input Error", JOptionPane.ERROR_MESSAGE);
                 } else {
                     // Create user object and insert into database
                     if ("Guest".equals(preservedRole)) {
-                        Guests user = new Guests(preservedName, preservedUsername, preservedPassword, preservedRole, preservedDOB);
+                        Guests user = new Guests(preservedName, preservedUsername, preservedPassword, preservedDOB);
                     } else {
                         Users user = new Users(preservedName, preservedUsername, preservedPassword, preservedRole);
                     }
@@ -432,7 +462,7 @@ public class ManagerScreen extends JFrame {
                             } else {
                                 // Handle user update
                                 if ("Guest".equals(preservedRole)) {
-                                    Guests user = new Guests(preservedName, preservedUsername, preservedPassword, preservedRole, preservedDOB);
+                                    Guests user = new Guests(preservedName, preservedUsername, preservedPassword, preservedDOB);
                                 } else {
                                     Users user = new Users(preservedName, preservedUsername, preservedPassword, preservedRole);
                                 }
@@ -443,7 +473,7 @@ public class ManagerScreen extends JFrame {
                                 break; // Exit the loop after successful input
                             }
                         }
-                        
+
                         break; // Exit the loop after successful input
                     } catch (NumberFormatException ex) {
                         // Show an error if the input is not a valid number
@@ -461,12 +491,52 @@ public class ManagerScreen extends JFrame {
             JOptionPane.showMessageDialog(this, "Export Report functionality not implemented yet.");
         });
 
+        initBartenderScreen();
+//        client.setOrderUpdateListener(this);
+//        client.startListener();
+
         setVisible(true);
     }
 
+    public void initBartenderScreen() {
+       try {
+           getOrder();
+       } catch (IOException | ClassNotFoundException ex) {
+           LOGGER.error(ex.getMessage());
+       }
+    }
+
+    public void getOrder() throws IOException, ClassNotFoundException {
+        List<Order> orders = client.getPendingOrders();
+        for (Order order : orders) {
+            addOrder(order);
+        }
+
+        orders = client.getServedOrders();
+        for (Order order : orders) {
+            addServedOrder(order);
+        }
+    }
+
+    public void getOrderDrinkObject(Order order) throws IOException, ClassNotFoundException {
+        OD = client.getOrderDetails(order);
+    }
+    public List<OrderDetail> getOrderDetails() {
+        return (List<OrderDetail>) OD[0];
+    }
+
+    public List<Drink> getOrderDetailsDrinks() {
+        return (List<Drink>) OD[1];
+    }
+
+//    @Override
+//    public void onNewOrder(Order order) {
+//        SwingUtilities.invokeLater(() -> addOrder(order));
+//    }
+
     // Method to add a single order to the list
     public void addOrder(Order order) {
-        if (orderListContentPanel.getComponentCount() == 1 && orderListContentPanel.getComponent(0) == noOrdersLabel) {
+        if (orderListContentPanel.getComponentCount() == 2 && orderListContentPanel.getComponent(0) == noOrdersLabel) {
             orderListContentPanel.remove(noOrdersLabel);
         }
 
@@ -482,7 +552,7 @@ public class ManagerScreen extends JFrame {
 
         JLabel orderLabel = new JLabel("Order#" + String.format("%03d", order.getOrderId()));
         orderLabel.setFont(new Font("Arial", Font.BOLD, 20));
-        JLabel guestLabel = new JLabel("    Guest " + order.getGuestId());
+        JLabel guestLabel = new JLabel("    Guest " + order.getGuestId() + "  |  " + order.getOrderDate());
         guestLabel.setFont(new Font("Arial", Font.PLAIN, 14));
 
         infoPanel.add(orderLabel);
@@ -503,7 +573,13 @@ public class ManagerScreen extends JFrame {
         viewButton.setFont(new Font("Arial", Font.BOLD, 14));
         viewButton.setFocusPainted(false);
         viewButton.setPreferredSize(new Dimension(100, 40));
-        viewButton.addActionListener(e -> showOrderDetails(order));
+        viewButton.addActionListener(e -> {
+            try {
+                showOrderDetails(order);
+            } catch (IOException | ClassNotFoundException ex) {
+                LOGGER.error(ex.getMessage());
+            }
+        });
 
         // Serve Button
         JButton serveButton = new JButton("SERVE");
@@ -514,7 +590,12 @@ public class ManagerScreen extends JFrame {
         serveButton.setPreferredSize(new Dimension(100, 40));
         serveButton.addActionListener(e -> {
             removeOrder(order.getOrderId());
-            addServedOrder(order); // Optionally move the order to "Served Orders"
+            addServedOrder(order);
+            try {
+                client.sendServedOrders(order);
+            } catch (IOException | ClassNotFoundException ex) {
+                LOGGER.error(ex.getMessage());
+            }
         });
 
         buttonPanel.add(viewButton);
@@ -565,34 +646,31 @@ public class ManagerScreen extends JFrame {
         orderListContentPanel.repaint();
     }   
     
-    private void showOrderDetails(Order order) {
-        
-        OrderDetailSQLProvider details = new OrderDetailSQLProvider();
-        DrinkSQLProvider drinksList = new DrinkSQLProvider();
-        
-        List<OrderDetail> orderDetails = details.getOrderDetailsByOrderId(order.getOrderId());
-        List<Drink> drinksData = drinksList.getAllDrinks();
-                
-        List<String> drinks = new ArrayList<>();
-        
-        for (OrderDetail orderDetail : orderDetails){
-            if (orderDetail.getOrderId() == order.getOrderId()){
-                for (Drink drink : drinksData){
-                    if (drink.getId() == orderDetail.getDrinkId()){
-                        drinks.add(drink.getName() + " ×"+ orderDetail.getQuantity());
-                    }
+    private void showOrderDetails(Order order) throws IOException, ClassNotFoundException {
+
+
+        getOrderDrinkObject(order);
+        List<Drink> drinks = getOrderDetailsDrinks();
+        List<OrderDetail> orderDetails = getOrderDetails();
+        List<String> orderItem = new ArrayList<>();
+        for (Drink drink : drinks) {
+            for (OrderDetail orderDetail : orderDetails) {
+                if (orderDetail.getDrinkId() == drink.getId()){
+                    drink.setQuantity(orderDetail.getQuantity());
                 }
             }
+            orderItem.add(drink.getName() + " x" + drink.getQuantity());
         }
-                
-        String items = String.join("\n", drinks);        
+
+        String items = String.join("\n", orderItem);
         String message = """
             Order Details:
+            Order Date: %s
             Order ID: %s
             Guest ID: %s
-            Items: 
+            Items: \n
             %s
-            """.formatted(order.getOrderId(), order.getGuestId(), items);
+            """.formatted(order.getOrderDate(), order.getOrderId(), order.getGuestId(), items);
 
         JOptionPane.showMessageDialog(this, message, "Order Details", JOptionPane.INFORMATION_MESSAGE);
     }
@@ -602,8 +680,8 @@ public class ManagerScreen extends JFrame {
             servedOrdersContentPanel.remove(noServedOrdersLabel);
         }
 
-        JLabel servedOrderLabel = new JLabel("Served Order#" + order.getOrderIdAsString() 
-        + " - Guest " + order.getGuestId());
+        JLabel servedOrderLabel = new JLabel("Order#" + order.getOrderIdAsString()
+        + "  |  Guest " + order.getGuestId() + "  |  Date: " + order.getOrderDate());
         servedOrderLabel.setFont(new Font("Arial", Font.PLAIN, 14));
 
         servedOrdersContentPanel.add(servedOrderLabel);
@@ -616,20 +694,6 @@ public class ManagerScreen extends JFrame {
 
 
     public static void main(String[] args) {
-        ManagerScreen managerScreen = new ManagerScreen();
-
-        // Create orders with items
-        managerScreen.addOrder(new Order(1, 1, 1,new Date(),true));
-        managerScreen.addOrder(new Order(2, 2, 2,new Date(),true));
-        managerScreen.addOrder(new Order(3, 3, 3,new Date(),true));
-        managerScreen.addOrder(new Order(4, 4, 4,new Date(),true));
-
-        // Example timer to remove orders after a delay
-        Timer timer = new Timer(3000, e -> {
-            managerScreen.removeOrder(1);
-            managerScreen.removeOrder(2);
-        });
-        timer.setRepeats(false);
-        timer.start();
+        ManagerScreen managerScreen = new ManagerScreen(new Client());
     }
 }

@@ -1,11 +1,12 @@
 package Model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Represents an order with details such as order ID, guest ID, bartender ID, order date, and status.
  */
-public class Order {
+public class Order implements Serializable {
 
     private int orderId;
     private int guestId;
@@ -24,6 +25,21 @@ public class Order {
      */
     public Order(int orderId, int guestId, int bartenderId, Date orderDate, boolean status) {
         this.orderId = orderId;
+        this.guestId = guestId;
+        this.bartenderId = bartenderId;
+        this.orderDate = orderDate;
+        this.status = status;
+    }
+
+    /**
+     * Constructs an Order object with the specified details (Without ID).
+     *
+     * @param guestId      the ID of the guest who placed the order
+     * @param bartenderId  the ID of the bartender handling the order
+     * @param orderDate    the date the order was placed
+     * @param status       the status of the order (e.g., completed or pending)
+     */
+    public Order(int guestId, int bartenderId, Date orderDate, boolean status) {
         this.guestId = guestId;
         this.bartenderId = bartenderId;
         this.orderDate = orderDate;
